@@ -128,13 +128,13 @@
                 </div>
                 
                 <div class="col-sm-12">
-                        <form role="form" onsubmit="return false;" id="formPersonas" class="form-horizontal centered">
-                            <div class="form-group" id="groupCedula">
+                        <form role="form" onsubmit="return false;" id="formRuta" class="form-horizontal centered">
+                            <div class="form-group" id="groupID">
                                 <div class="col-sm-4" style="text-align: right; vertical-align: middle;">
-                                    <p><b>Buscar por nombre de la persona:</b></p>
+                                    <p><b>Buscar por id de la ruta:</b></p>
                                 </div>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="nombrePersona" placeholder="Digite el nombre de la persona">
+                                    <input type="text" class="form-control" id="idRuta" placeholder="Digite el id de la ruta">
                                 </div>
                                 <div class="col-sm-4">
                                     <button type="button" id="buscar" class="btn btn-info centered" >
