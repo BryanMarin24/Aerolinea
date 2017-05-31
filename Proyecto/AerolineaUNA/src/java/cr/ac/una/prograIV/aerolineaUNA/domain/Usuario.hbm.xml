@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/04/2017 03:51:22 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="cr.ac.una.prograIV.aerolineaUNA.domain.Usuario" table="usuario" catalog="aerolinea" optimistic-lock="version">
+        <id name="idUsuario" type="string">
+            <column name="Id_Usuario" length="8" />
+            <generator class="assigned" />
+        </id>
+        <property name="contrase&#241;a" type="string">
+            <column name="Contrase&#241;a" length="8" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="15" not-null="true" />
+        </property>
+        <property name="apellido1" type="string">
+            <column name="Apellido1" length="15" not-null="true" />
+        </property>
+        <property name="apellido2" type="string">
+            <column name="Apellido2" length="15" not-null="true" />
+        </property>
+        <property name="correo" type="string">
+            <column name="Correo" length="45" not-null="true" />
+        </property>
+        <property name="fechaNacimiento" type="date">
+            <column name="Fecha_Nacimiento" length="10" not-null="true" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="Direccion" length="45" not-null="true" />
+        </property>
+        <property name="telefonoLocal" type="int">
+            <column name="Telefono_Local" not-null="true" />
+        </property>
+        <property name="telefonoCelular" type="string">
+            <column name="Telefono_Celular" length="45" not-null="true" />
+        </property>
+        <property name="tipo" type="string">
+            <column name="Tipo" length="8" not-null="true" />
+        </property>
+        <set name="reservas" table="reserva" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_Usuario" length="8" not-null="true" />
+            </key>
+            <one-to-many class="cr.ac.una.prograIV.aerolineaUNA.domain.Reserva" />
+        </set>
+    </class>
+</hibernate-mapping>

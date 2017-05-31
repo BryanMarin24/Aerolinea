@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/04/2017 03:51:22 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="cr.ac.una.prograIV.aerolineaUNA.domain.Avion" table="avion" catalog="aerolinea" optimistic-lock="version">
+        <id name="idAvion" type="string">
+            <column name="Id_Avion" length="8" />
+            <generator class="assigned" />
+        </id>
+         <property name="ano" type="string">
+            <column name="Ano" length="4" not-null="true" />
+        </property>
+        
+        <property name="modelo" type="string">
+            <column name="Modelo" length="8" not-null="true" />
+        </property>
+        
+        <property name="marca" type="string">
+            <column name="Marca" length="8" not-null="true" />
+        </property>
+
+        <property name="cantidadFila" type="int">
+            <column name="Cantidad_Fila" not-null="true" />
+        </property>
+        <property name="cantidadAsientosFila" type="int">
+            <column name="Cantidad_Asientos_Fila" not-null="true" />
+        </property>
+        <bag name="rutas" table="ruta" inverse="true" lazy="false" cascade="all">
+            <key>
+                <column name="Id_Avion" length="8" not-null="true" />
+            </key>
+            <one-to-many class="cr.ac.una.prograIV.aerolineaUNA.domain.Ruta" />
+        </bag>
+    </class>
+</hibernate-mapping>

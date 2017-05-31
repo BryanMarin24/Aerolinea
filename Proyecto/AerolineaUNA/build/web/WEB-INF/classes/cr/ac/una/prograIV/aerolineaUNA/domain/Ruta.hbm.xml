@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/04/2017 03:51:22 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="cr.ac.una.prograIV.aerolineaUNA.domain.Ruta" table="ruta" catalog="aerolinea" optimistic-lock="version">
+        <id name="idRuta" type="string">
+            <column name="Id_Ruta" length="8" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="avion" class="cr.ac.una.prograIV.aerolineaUNA.domain.Avion" fetch="select">
+            <column name="Id_Avion" length="8" not-null="false" />
+        </many-to-one>
+        <many-to-one name="horario" class="cr.ac.una.prograIV.aerolineaUNA.domain.Horario" fetch="select">
+            <column name="Id_Horario" length="8" not-null="false" />
+        </many-to-one>
+        <property name="origen" type="string">
+            <column name="Origen" length="25" not-null="true" />
+        </property>
+        <property name="destino" type="string">
+            <column name="Destino" length="25" not-null="true" />
+        </property>
+        <property name="costo" type="float">
+            <column name="Costo" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="horas" type="int">
+            <column name="Duracion_Horas" length="2" not-null="true" />
+        </property>
+        <property name="minutos" type="int">
+            <column name="Duracion_Minutos" length="2" not-null="true" />
+        </property>
+        <bag name="vuelos" table="vuelo" inverse="true" lazy="false" cascade="all">
+            <key>
+                <column name="Id_Ruta" length="8" not-null="true" />
+            </key>
+            <one-to-many class="cr.ac.una.prograIV.aerolineaUNA.domain.Vuelo" />
+        </bag>
+    </class>
+</hibernate-mapping>

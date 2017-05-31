@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/04/2017 03:51:22 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="cr.ac.una.prograIV.aerolineaUNA.domain.Equipaje" table="equipaje" catalog="aerolinea" optimistic-lock="version">
+        <id name="idEquipaje" type="int">
+            <column name="Id_Equipaje" />
+            <generator class="assigned" />
+        </id>
+        <property name="kilos" type="float">
+            <column name="Kilos" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="15" />
+        </property>
+        <set name="reservas" table="reserva" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id_Equipaje" not-null="true" />
+            </key>
+            <one-to-many class="cr.ac.una.prograIV.aerolineaUNA.domain.Reserva" />
+        </set>
+    </class>
+</hibernate-mapping>
