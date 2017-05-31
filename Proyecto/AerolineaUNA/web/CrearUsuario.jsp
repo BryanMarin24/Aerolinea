@@ -99,24 +99,24 @@
                         <hr>
                     </div>
                 </div>
-                
+
                 <div class="col-sm-12">
-                        <form role="form" onsubmit="return false;" id="formUsuarios" class="form-horizontal centered">
-                            <div class="form-group" id="groupID">
-                                <div class="col-sm-4" style="text-align: right; vertical-align: middle;">
-                                    <p><b>Buscar por nombre del usuario:</b></p>
-                                </div>
-                                <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="nombreUsuario" placeholder="Digite el nombre del usuario">
-                                </div>
-                                <div class="col-sm-4">
-                                    <button type="button" id="buscar" class="btn btn-info centered" >
-                                        Buscar <span class="glyphicon glyphicon-search"></span>
-                                    </button>
-                                </div>
+                    <form role="form" onsubmit="return false;" id="formUsuarios" class="form-horizontal centered">
+                        <div class="form-group" id="groupID">
+                            <div class="col-sm-4" style="text-align: right; vertical-align: middle;">
+                                <p><b>Buscar por nombre del usuario:</b></p>
                             </div>
-                        </form>
-                    </div>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="nombreUsuario" placeholder="Digite el nombre del usuario">
+                            </div>
+                            <div class="col-sm-4">
+                                <button type="button" id="buscar" class="btn btn-info centered" >
+                                    Buscar <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
 
                 <form class="form-horizontal">
 
@@ -135,32 +135,32 @@
                     <div class="form-group">
                         <label class="control-label col-xs-3">NOMBRE:</label>
                         <div class="col-xs-9">
-                            <input type="text" class="form-control" placeholder="Nombre">
+                            <input type="text" class="form-control" id="nombre" placeholder="Nombre">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-xs-3">PRIMER APELLIDO:</label>
                         <div class="col-xs-9">
-                            <input type="text" class="form-control" placeholder="Primer Apellido">
+                            <input type="text" class="form-control" id="primerApellido" placeholder="Primer Apellido">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-xs-3">SEGUNDO APELLIDO:</label>
                         <div class="col-xs-9">
-                            <input type="text" class="form-control" placeholder="Segundo Apellido">
+                            <input type="text" class="form-control" id="segundoApellido" placeholder="Segundo Apellido">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-xs-3" >TELÉFONO 1:</label>
                         <div class="col-xs-9">
-                            <input type="tel" class="form-control" placeholder="Telefono1">
+                            <input type="tel" class="form-control" id="telefono1" placeholder="Telefono1">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-xs-3" >TELÉFONO 2:</label>
                         <div class="col-xs-9">
-                            <input type="tel" class="form-control" placeholder="Telefono2">
+                            <input type="tel" class="form-control" id="telefono2" placeholder="Telefono2">
                         </div>
                     </div>
 
@@ -168,26 +168,38 @@
                     <div class="form-group">
                         <label class="control-label col-xs-3">DIRECCIÓN:</label>
                         <div class="col-xs-9">
-                            <textarea rows="3" class="form-control" placeholder="Dirección"></textarea>
+                            <textarea rows="3" class="form-control" id="direccion" placeholder="Dirección"></textarea>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-xs-3">F. NACIMIENTO:</label>
                         <div class="col-xs-9">
-                            <input type="date" name="fecha" id="salida">
+                            <input type="date" name="fecha" id="fechaNacimiento">
                         </div>
                     </div>  
 
                     <div class="form-group">
-                        <div class="col-xs-offset-3 col-xs-9">                               
-                            <br><br>
-                            <input type="submit" class="btn btn-primary" value="Enviar">
-                            <input type="reset" class="btn btn-default" value="Limpiar">
+                        <input type="hidden" value="agregarUsuario" id="usuariosAction"/>
+                        <div class="col-sm-offset-2 col-sm-3">
+                            <button  type="submit" class="btn btn-default" id="enviar">Registrar</button>
+                            <button  type="reset" class="btn btn-danger hidden" id="cancelar">Cancelar Edicion</button>
                         </div>
+
+                        <div class="col-sm-5">
+                            <div class="form-group height25" >
+                                <div class="hiddenDiv" id="mesajeResult">
+                                    <strong id="mesajeResultNeg">Info!</strong> 
+                                    <span id="mesajeResultText">This alert box could indicate a neutral informative change or action.</span>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </form>
 
+                <br><br>
+                <table class="table table-hover table-condensed" id="tablaUsuarios"></table>
 
             </div>             
         </div>
