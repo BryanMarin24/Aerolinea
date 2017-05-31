@@ -99,6 +99,24 @@
                         <hr>
                     </div>
                 </div>
+                
+                <div class="col-sm-12">
+                        <form role="form" onsubmit="return false;" id="formPersonas" class="form-horizontal centered">
+                            <div class="form-group" id="groupCedula">
+                                <div class="col-sm-4" style="text-align: right; vertical-align: middle;">
+                                    <p><b>Buscar por nombre de la persona:</b></p>
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="nombrePersona" placeholder="Digite el nombre de la persona">
+                                </div>
+                                <div class="col-sm-4">
+                                    <button type="button" id="buscar" class="btn btn-info centered" >
+                                        Buscar <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
 
                 <form class="form-horizontal">
                     <div class="form-group">
