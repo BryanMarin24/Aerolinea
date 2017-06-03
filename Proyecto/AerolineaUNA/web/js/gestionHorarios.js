@@ -161,12 +161,6 @@ function eliminarHorario(idHorario) {
 
 }
 
-//******************************************************************************
-//******************************************************************************
-//metodos para eliminar personas
-//******************************************************************************
-//******************************************************************************
-
 function consultarHorarioByID(idHorario) {
     mostrarModal("myModal", "Espere por favor..", "Consultando el horario seleccionado","false");
     //Se envia la información por ajax
@@ -327,9 +321,6 @@ function limpiarForm() {
     //Resetear el formulario
     $('#formHorario').trigger("reset");
 }
-
-
-
 
 function validarTamCampos() {
     var validacion = true;

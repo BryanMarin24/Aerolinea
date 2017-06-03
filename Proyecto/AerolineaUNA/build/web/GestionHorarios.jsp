@@ -152,14 +152,7 @@
                             <input type="text" class="form-control" id="identificador">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="ruta" class="col-sm-2 control-label">Ruta</label>
-                        <div class="col-sm-10" id="groupIdRuta">
-                            <select class="form-control" id="idRuta">
 
-                            </select>
-                        </div>
-                    </div>
                     <div class="form-group" id="groupHorario">
                         <label for="horario" class="col-sm-2 control-label">Horario:</label>
                         <label for="dia" class="col-sm-2 control-label">Dia</label>

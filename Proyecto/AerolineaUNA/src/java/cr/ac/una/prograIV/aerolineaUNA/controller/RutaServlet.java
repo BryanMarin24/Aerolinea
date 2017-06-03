@@ -6,10 +6,15 @@
 package cr.ac.una.prograIV.aerolineaUNA.controller;
 
 import com.google.gson.Gson;
+import cr.ac.una.prograIV.aerolineaUNA.bl.AvionBL;
+import cr.ac.una.prograIV.aerolineaUNA.bl.HorarioBL;
 import cr.ac.una.prograIV.aerolineaUNA.bl.RutaBL;
+import cr.ac.una.prograIV.aerolineaUNA.domain.Avion;
+import cr.ac.una.prograIV.aerolineaUNA.domain.Horario;
 import cr.ac.una.prograIV.aerolineaUNA.domain.Ruta;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -39,6 +44,16 @@ public class RutaServlet extends HttpServlet {
 
             //Se crea el objeto de la logica de negocio
             RutaBL pBL = new RutaBL();
+            
+            /***********************/
+            Horario h = new Horario();
+            HorarioBL hBL = new HorarioBL();
+             /***********************/
+            
+             /***********************/
+            Avion a = new Avion();
+            AvionBL aBL = new AvionBL();
+             /***********************/
 
             //Se hace una pausa para ver el modal
             Thread.sleep(1000);
@@ -61,9 +76,20 @@ public class RutaServlet extends HttpServlet {
                 case "eliminarRuta":
                         String id1 = request.getParameter("idRuta");
                         p.setIdRuta(id1);
-                    
+                        
+                        /***************************/
+                        List<Horario> lh = hBL.findAll(Horario.class.getName());
+                        /***************************/
+                        
+                        /***************************/
+                        List<Avion> la = aBL.findAll(Avion.class.getName());
+                        /***************************/
+                        
                         //Se elimina el objeto
                         pBL.delete(p);
+                        
+                        
+                        
 
                         //Se imprime la respuesta con el response
                         out.print("La Ruta fue eliminada correctamente");
@@ -94,7 +120,25 @@ public class RutaServlet extends HttpServlet {
                     if(accion.equals("agregarRuta")){ //es insertar personas
                         //Se guarda el objeto
                         pBL.save(p);
-
+                        
+                        /******************/
+                        String idh = request.getParameter("idHorario");
+                        h = hBL.findById(idh);
+                        h.setRutas((List<Ruta>) p);
+                        hBL.merge(h);
+                        /******************/
+                        
+                         /******************/
+                        String ida = request.getParameter("idAvion");
+                        a = aBL.findById(ida);
+                        a.setRutas((List<Ruta>) p);
+                        aBL.merge(a);
+                        /******************/
+                        
+                        
+                        
+                        
+                        
                         //Se imprime la respuesta con el response
                         out.print("C~La ruta fue ingresada correctamente");
                         

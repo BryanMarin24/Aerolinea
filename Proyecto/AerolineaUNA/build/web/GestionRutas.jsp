@@ -187,6 +187,25 @@
                         </div>
                     </div>
                     
+                   <div class="form-group">
+                        <label for="horario" class="col-sm-2 control-label">Horario</label>
+                        <div class="col-sm-10" id="groupIdHorario">
+                            <select class="form-control" id="idHorario">
+
+                            </select>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="form-group">
+                        <label for="avion" class="col-sm-2 control-label">Avion</label>
+                        <div class="col-sm-10" id="groupIdAvion">
+                            <select class="form-control" id="idAvion">
+
+                            </select>
+                        </div>
+                    </div>
+                    
 
 
                     <div class="form-group">

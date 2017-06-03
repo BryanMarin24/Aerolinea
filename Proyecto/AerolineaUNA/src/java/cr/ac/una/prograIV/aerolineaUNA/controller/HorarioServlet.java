@@ -46,13 +46,10 @@ public class HorarioServlet extends HttpServlet {
 
             //Se crea el objeto de la logica de negocio
             HorarioBL pBL = new HorarioBL();
+                 
+            Ruta r = new Ruta();
+            RutaBL rBL = new RutaBL();
             
-//            
-//             Ruta r = new Ruta();
-//
-//            //Se crea el objeto de la logica de negocio
-//            RutaBL rBL = new RutaBL();
-
             //Se hace una pausa para ver el modal
             Thread.sleep(1000);
           
@@ -73,19 +70,12 @@ public class HorarioServlet extends HttpServlet {
                     break;
                 case "eliminarHorario":
                         String id1 = request.getParameter("idHorario"); 
-                        p.setIdHorario(id1);
-//                        List<Ruta> lr = rBL.findAll(Ruta.class.getName());
+                        p.setIdHorario(id1);                   
                        
                     
-                        //Se elimina el objeto
+                       //Se elimina el objeto
                         pBL.delete(p);
-                        
-//                        for(int i=0;i<lr.size();i++){
-//                            if(lr.get(i).getHorario().getIdHorario()==id1){
-//                                lr.get(i).setHorario(null);
-//                                rBL.merge( lr.get(i));}
-//                        }
-                        
+                          
 
                         //Se imprime la respuesta con el response
                         out.print("El Horario fue eliminado correctamente");
@@ -115,10 +105,6 @@ public class HorarioServlet extends HttpServlet {
                         //Se guarda el objeto
                         pBL.save(p);
                         
-//                        String idr = request.getParameter("idRuta");
-//                        r = rBL.findById(idr);
-//                        r.setHorario(p);
-//                        rBL.merge(r);
 
                         //Se imprime la respuesta con el response
                         out.print("C~El horario fue ingresado correctamente");
