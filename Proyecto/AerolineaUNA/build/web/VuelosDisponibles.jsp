@@ -103,7 +103,7 @@
                 <div class="col-lg-12">
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
-                    <a href="Asientos.html" class="btn btn-primary btn-lg active" role="button">Reservar Asientos</a>
+                    <a href="Asientos.jsp" class="btn btn-primary btn-lg active" role="button">Reservar Asientos</a>
                     </div>
                     <div class="col-md-4"></div>
                 </div>

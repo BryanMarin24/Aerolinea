@@ -73,7 +73,13 @@ $(document).ready(function () {
                  */
                 $counter.text(sc.find('selected').length + 1);
                 $total.text(recalculateTotal(sc) + this.data().price);
-
+                
+                /*
+                document.getElementById("amount").value = $total.text(recalculateTotal(sc) + this.data().price);
+                console.log($total.text(recalculateTotal(sc) + this.data().price));
+                console.log(1);
+                */
+                
                 return 'selected';
             } else if (this.status() == 'selected') {
                 //update the counter
@@ -81,6 +87,12 @@ $(document).ready(function () {
                 //and total
                 $total.text(recalculateTotal(sc) - this.data().price);
 
+/*
+                document.getElementById("amount").value = $total.text(recalculateTotal(sc) + this.data().price);
+                console.log($total.text(recalculateTotal(sc) + this.data().price));
+                console.log(1);
+*/
+                
                 //remove the item from our cart
                 $('#cart-item-' + this.settings.id).remove();
 
