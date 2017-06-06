@@ -3,32 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Estudiante/Downloads/Proyecto/AerolineaUNA/web/Pago.jsp</file>
-            <file>file:/C:/Users/Estudiante/Downloads/Proyecto/AerolineaUNA/web/Historico.jsp</file>
-            <file>file:/C:/Users/Estudiante/Downloads/Proyecto/AerolineaUNA/web/GestionTipoAviones.jsp</file>
-            <file>file:/C:/Users/Estudiante/Downloads/Proyecto/AerolineaUNA/web/js/GestionTipoAviones.js</file>
-            <file>file:/C:/Users/Estudiante/Downloads/Proyecto/AerolineaUNA/src/java/cr/ac/una/prograIV/aerolineaUNA/domain/Avion.hbm.xml</file>
-            <file>file:/C:/Users/Estudiante/Downloads/Proyecto/AerolineaUNA/web/BuscarAviones.jsp</file>
-            <file>file:/C:/Users/Estudiante/Downloads/Proyecto/AerolineaUNA/src/java/cr/ac/una/prograIV/aerolineaUNA/controller/AvionServlet.java</file>
-            <file>file:/C:/Users/Estudiante/Downloads/Proyecto/AerolineaUNA/web/Contactenos.jsp</file>
-            <file>file:/C:/Users/Estudiante/Downloads/Proyecto/AerolineaUNA/web/CrearUsuario.jsp</file>
-            <file>file:/C:/Users/Estudiante/Downloads/Proyecto/AerolineaUNA/src/java/cr/ac/una/prograIV/aerolineaUNA/dao/AvionDAO.java</file>
-            <file>file:/C:/Users/Estudiante/Downloads/Proyecto/AerolineaUNA/src/java/cr/ac/una/prograIV/aerolineaUNA/domain/Avion.java</file>
-            <file>file:/C:/Users/Estudiante/Downloads/Proyecto/AerolineaUNA/web/RutasMasVentas.jsp</file>
-            <file>file:/C:/Users/Estudiante/Downloads/Proyecto/AerolineaUNA/web/AsignarAviones.jsp</file>
-            <file>file:/C:/Users/Estudiante/Downloads/Proyecto/AerolineaUNA/web/Asientos.jsp</file>
-            <file>file:/C:/Users/Estudiante/Downloads/Proyecto/AerolineaUNA/web/VuelosDisponibles.jsp</file>
-            <file>file:/C:/Users/Estudiante/Downloads/Proyecto/AerolineaUNA/web/IngresosAño.jsp</file>
-            <file>file:/C:/Users/Estudiante/Downloads/Proyecto/AerolineaUNA/web/FacturadoMes.jsp</file>
-            <file>file:/C:/Users/Estudiante/Downloads/Proyecto/AerolineaUNA/web/ClientesPorAvion.jsp</file>
-            <file>file:/C:/Users/Estudiante/Downloads/Proyecto/AerolineaUNA/web/index.jsp</file>
-            <file>file:/C:/Users/Estudiante/Downloads/Proyecto/AerolineaUNA/web/GestionHorarios.jsp</file>
-            <file>file:/C:/Users/Estudiante/Downloads/Proyecto/AerolineaUNA/web/TiposDeAviones.jsp</file>
-            <file>file:/C:/Users/Estudiante/Downloads/Proyecto/AerolineaUNA/web/GestionRutas.jsp</file>
-            <file>file:/C:/Users/Estudiante/Downloads/Proyecto/AerolineaUNA/src/java/cr/ac/una/prograIV/aerolineaUNA/test/AvionTest.java</file>
-            <file>file:/C:/Users/Estudiante/Downloads/Proyecto/AerolineaUNA/web/BuscarVuelos.jsp</file>
-            <file>file:/C:/Users/Estudiante/Downloads/Proyecto/AerolineaUNA/web/js/AsignarAvionesJS.js</file>
-            <file>file:/C:/Users/Estudiante/Downloads/Proyecto/AerolineaUNA/src/java/cr/ac/una/prograIV/aerolineaUNA/bl/AvionBL.java</file>
+            <file>file:/C:/Users/juanp/Documents/GitHub/Aerolinea/Proyecto/AerolineaUNA/web/js/gestionHorarios.js</file>
+            <file>file:/C:/Users/juanp/Documents/GitHub/Aerolinea/Proyecto/AerolineaUNA/web/GestionRutas.jsp</file>
+            <file>file:/C:/Users/juanp/Documents/GitHub/Aerolinea/Proyecto/AerolineaUNA/src/java/cr/ac/una/prograIV/aerolineaUNA/domain/RutaAux.java</file>
+            <file>file:/C:/Users/juanp/Documents/GitHub/Aerolinea/Proyecto/AerolineaUNA/src/java/cr/ac/una/prograIV/aerolineaUNA/domain/Ruta.java</file>
+            <file>file:/C:/Users/juanp/Documents/GitHub/Aerolinea/Proyecto/AerolineaUNA/web/js/gestionRutas.js</file>
+            <file>file:/C:/Users/juanp/Documents/GitHub/Aerolinea/Proyecto/AerolineaUNA/src/java/cr/ac/una/prograIV/aerolineaUNA/controller/RutaServlet.java</file>
+            <file>file:/C:/Users/juanp/Documents/GitHub/Aerolinea/Proyecto/AerolineaUNA/src/java/cr/ac/una/prograIV/aerolineaUNA/domain/Horario.java</file>
+            <file>file:/C:/Users/juanp/Documents/GitHub/Aerolinea/Proyecto/AerolineaUNA/web/GestionHorarios.jsp</file>
         </group>
     </open-files>
 </project-private>

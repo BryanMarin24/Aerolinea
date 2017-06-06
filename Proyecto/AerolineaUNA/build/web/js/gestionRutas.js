@@ -149,6 +149,8 @@ function consultarRutas() {
         type: 'POST',
         dataType: "json"
     });
+    consultarAviones();
+    consultarHorarios();
 }
 
 function dibujarTabla(dataJson) {
@@ -165,10 +167,9 @@ function dibujarTabla(dataJson) {
     row.append($("<th><b>DESTINO</b></th>"));
     row.append($("<th><b>COSTO</b></th>"));
     row.append($("<th><b>DURACION</b></th>"));
-    row.append($("<th><b>ACCIÓN</th>"));
     row.append($("<th><b>ID AVION</b></th>"));
     row.append($("<th><b>ID HORARIO</b></th>"));
-    
+     row.append($("<th><b>ACCIÓN</th>"));
     
     //carga la tabla con el json devuelto
     for (var i = 0; i < dataJson.length; i++) {
@@ -187,6 +188,8 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.destino + "</td>"));
     row.append($("<td> $" + rowData.costo + "</td>"));
     row.append($("<td>" + rowData.horas + "h y "+ rowData.minutos +"min</td>"));
+    row.append($("<td> " + rowData.idAvion + "</td>"));
+    row.append($("<td> " + rowData.idHorario + "</td>"));
     row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="consultarRutaByID('+"'"+rowData.idRuta+"'"+');">'+
                         '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>'+
                     '</button>'+

@@ -1,8 +1,11 @@
 
 
 $(document).ready(function () {
-    consultarHorarios();
+  consultarHorarios();
+     $("#myPager").html(""); 
+     $('#myTable').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:7});
 });
+
 
 $(function () {
  $("#enviar").click(function () {
@@ -26,7 +29,7 @@ function consultarRutas() {
             alert("Se presento un error a la hora de cargar la información de las rutas en la base de datos");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            anadirRutasSelect(data);
+           // anadirRutasSelect(data);
             ocultarModal("myModal");
 
         },
@@ -66,7 +69,10 @@ function consultarHorarios() {
         type: 'POST',
         dataType: "json"
     });
-    consultarRutas();
+     $("#myPager").html(""); 
+     $('#myTable').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:7});
+
+    
 }
 
 function dibujarTabla(dataJson) {
@@ -76,8 +82,10 @@ function dibujarTabla(dataJson) {
     //muestra el enzabezado de la tabla
     var head = $("<thead />");
     var row = $("<tr />");
+    var body = "<tbody id='myTable'></tbody>";
     head.append(row);
     $("#tablaHorarios").append(head); 
+    $("#tablaHorarios").append(body); 
     row.append($("<th><b>ID</b></th>"));
     //row.append($("<th><b>ID RUTA</b></th>"));
     row.append($("<th><b>FECHA SALIDA</b></th>"));
@@ -96,7 +104,7 @@ function dibujarFila(rowData) {
     //de una persona
     var ruta =consultaRutaHorario(rowData.idHorario);
     var row = $("<tr />");
-    $("#tablaHorarios").append(row); 
+    $("#myTable").append(row); 
     row.append($("<td>" + rowData.idHorario + "</td>"));
    // row.append($("<td>" + ruta.idRuta + "</td>"));
     row.append($("<td>" + rowData.dia +" a las "+rowData.hora+ "</td>"));
@@ -241,7 +249,7 @@ function enviar() {
             data: {
                 accion: $("#horariosAction").val(),
                 idHorario: $("#identificador").val(),
-                idRuta: $("#idRuta").val(),
+                //idRuta: $("#idRuta").val(),
                 dia: $("#dia").val(),
                 hora: $("#hora").val()
             },
@@ -281,7 +289,7 @@ function validar() {
     $("#groupId").removeClass("has-error");
     $("#groupDia").removeClass("has-error");
     $("#groupHora").removeClass("has-error");
-    $("#groupIdRuta").removeClass("has-error");
+   // $("#groupIdRuta").removeClass("has-error");
     
     
 
@@ -295,10 +303,10 @@ function validar() {
         $("#groupDia").addClass("has-error");
         validacion = false;
     }
-    if ($("#idRuta").val() == null) {
-        $("#groupIdRuta").addClass("has-error");
-        validacion = false;
-    }
+//    if ($("#idRuta").val() == null) {
+//        $("#groupIdRuta").addClass("has-error");
+//        validacion = false;
+//    }
     if ($("#hora").val()=="") {
         $("#groupHora").addClass("has-error");
         validacion = false;
@@ -340,4 +348,105 @@ function validarTamCampos() {
 }
 
 
+$.fn.pageMe = function(opts){
+    var $this = this,
+        defaults = {
+            perPage: 7,
+            showPrevNext: false,
+            hidePageNumbers: false
+        },
+        settings = $.extend(defaults, opts);
+    
+    var listElement = $("#myTable");
+    var perPage = settings.perPage; 
+    var children = listElement.children();
+    var pager = $('.pager');
+    
+    if (typeof settings.childSelector!="undefined") {
+        children = listElement.find(settings.childSelector);
+    }
+    
+    if (typeof settings.pagerSelector!="undefined") {
+        pager = $(settings.pagerSelector);
+    }
+    
+    var numItems = children.size();
+    var numPages = Math.ceil(numItems/perPage);
+
+    pager.data("curr",0);
+    
+    if (settings.showPrevNext){
+        $('<li><a href="#" class="prev_link">«</a></li>').appendTo(pager);
+    }
+    
+    var curr = 0;
+    while(numPages > curr && (settings.hidePageNumbers==false)){
+        $('<li><a href="#" class="page_link">'+(curr+1)+'</a></li>').appendTo(pager);
+        curr++;
+    }
+    
+    if (settings.showPrevNext){
+        $('<li><a href="#" class="next_link">»</a></li>').appendTo(pager);
+    }
+    
+    pager.find('.page_link:first').addClass('active');
+    pager.find('.prev_link').hide();
+    if (numPages<=1) {
+        pager.find('.next_link').hide();
+    }
+      pager.children().eq(1).addClass("active");
+    
+    children.hide();
+    children.slice(0, perPage).show();
+    
+    pager.find('li .page_link').click(function(){
+        var clickedPage = $(this).html().valueOf()-1;
+        goTo(clickedPage,perPage);
+        return false;
+    });
+    pager.find('li .prev_link').click(function(){
+        previous();
+        return false;
+    });
+    pager.find('li .next_link').click(function(){
+        next();
+        return false;
+    });
+    
+    function previous(){
+        var goToPage = parseInt(pager.data("curr")) - 1;
+        goTo(goToPage);
+    }
+     
+    function next(){
+        goToPage = parseInt(pager.data("curr")) + 1;
+        goTo(goToPage);
+    }
+    
+    function goTo(page){
+        var startAt = page * perPage,
+            endOn = startAt + perPage;
+        
+        children.css('display','none').slice(startAt, endOn).show();
+        
+        if (page>=1) {
+            pager.find('.prev_link').show();
+        }
+        else {
+            pager.find('.prev_link').hide();
+        }
+        
+        if (page<(numPages-1)) {
+            pager.find('.next_link').show();
+        }
+        else {
+            pager.find('.next_link').hide();
+        }
+        
+        pager.data("curr",page);
+      	pager.children().removeClass("active");
+        pager.children().eq(page+1).addClass("active");
+    
+    }
+};
 

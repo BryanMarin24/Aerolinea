@@ -34,6 +34,9 @@ function consultarAviones() {
         type: 'POST',
         dataType: "json"
     });
+     $("#myPager").html(""); 
+     $('#myTable').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:7});
+
 }
 
 function dibujarTabla(dataJson) {
@@ -43,8 +46,10 @@ function dibujarTabla(dataJson) {
     //muestra el enzabezado de la tabla
     var head = $("<thead />");
     var row = $("<tr />");
+   var body = "<tbody id='myTable'></tbody>";
     head.append(row);
-    $("#tablaAviones").append(head);
+    $("#tablaAviones").append(head); 
+    $("#tablaAviones").append(body); 
     row.append($("<th><b>ID</b></th>"));
     row.append($("<th><b>ANNO</b></th>"));
     row.append($("<th><b>MODELO</b></th>"));
@@ -65,7 +70,7 @@ function dibujarFila(rowData) {
     //de una persona
     
     var row = $("<tr />");
-   $("#tablaAviones").append(row);
+   $("#myTable").append(row);
     row.append($("<td>" + rowData.idAvion + "</td>"));
     row.append($("<td>" + rowData.ano + "</td>"));
     row.append($("<td>" + rowData.modelo + "</td>"));
@@ -281,7 +286,7 @@ function validar() {
 
 function limpiarForm() {
     //setea el focus del formulario
-    $('#Identificador').focus();
+    $('#identificador').focus();
      $("#cancelar").addClass("hidden");
     //se cambia la accion por agregarPersona
     $("#avionAction").val("agregarAvion"); 
@@ -291,7 +296,7 @@ function limpiarForm() {
     mostrarMensaje("hiddenDiv", "", "");
 
     //Resetear el formulario
-    $('#formAvion').trigger("reset");
+    $('#formAviones').trigger("reset");
 }
 
 
@@ -368,3 +373,104 @@ function validarTamCampos() {
 
 
 
+$.fn.pageMe = function(opts){
+    var $this = this,
+        defaults = {
+            perPage: 7,
+            showPrevNext: false,
+            hidePageNumbers: false
+        },
+        settings = $.extend(defaults, opts);
+    
+    var listElement = $this;
+    var perPage = settings.perPage; 
+    var children = listElement.children();
+    var pager = $('.pager');
+    
+    if (typeof settings.childSelector!="undefined") {
+        children = listElement.find(settings.childSelector);
+    }
+    
+    if (typeof settings.pagerSelector!="undefined") {
+        pager = $(settings.pagerSelector);
+    }
+    
+    var numItems = children.size();
+    var numPages = Math.ceil(numItems/perPage);
+
+    pager.data("curr",0);
+    
+    if (settings.showPrevNext){
+        $('<li><a href="#" class="prev_link">«</a></li>').appendTo(pager);
+    }
+    
+    var curr = 0;
+    while(numPages > curr && (settings.hidePageNumbers==false)){
+        $('<li><a href="#" class="page_link">'+(curr+1)+'</a></li>').appendTo(pager);
+        curr++;
+    }
+    
+    if (settings.showPrevNext){
+        $('<li><a href="#" class="next_link">»</a></li>').appendTo(pager);
+    }
+    
+    pager.find('.page_link:first').addClass('active');
+    pager.find('.prev_link').hide();
+    if (numPages<=1) {
+        pager.find('.next_link').hide();
+    }
+      pager.children().eq(1).addClass("active");
+    
+    children.hide();
+    children.slice(0, perPage).show();
+    
+    pager.find('li .page_link').click(function(){
+        var clickedPage = $(this).html().valueOf()-1;
+        goTo(clickedPage,perPage);
+        return false;
+    });
+    pager.find('li .prev_link').click(function(){
+        previous();
+        return false;
+    });
+    pager.find('li .next_link').click(function(){
+        next();
+        return false;
+    });
+    
+    function previous(){
+        var goToPage = parseInt(pager.data("curr")) - 1;
+        goTo(goToPage);
+    }
+     
+    function next(){
+        goToPage = parseInt(pager.data("curr")) + 1;
+        goTo(goToPage);
+    }
+    
+    function goTo(page){
+        var startAt = page * perPage,
+            endOn = startAt + perPage;
+        
+        children.css('display','none').slice(startAt, endOn).show();
+        
+        if (page>=1) {
+            pager.find('.prev_link').show();
+        }
+        else {
+            pager.find('.prev_link').hide();
+        }
+        
+        if (page<(numPages-1)) {
+            pager.find('.next_link').show();
+        }
+        else {
+            pager.find('.next_link').hide();
+        }
+        
+        pager.data("curr",page);
+      	pager.children().removeClass("active");
+        pager.children().eq(page+1).addClass("active");
+    
+    }
+};
