@@ -24,6 +24,23 @@
         <servlet-name>HorarioServlet</servlet-name>
         <url-pattern>/HorarioServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>PagoServlet</servlet-name>
+        <servlet-class>cr.ac.una.prograIV.aerolineaUNA.controller.PagoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PagoServlet</servlet-name>
+        <url-pattern>/PagoServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>UsuariosServlet</servlet-name>
+        <servlet-class>cr.ac.una.prograIV.aerolineaUNA.controller.UsuariosServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UsuariosServlet</servlet-name>
+        <url-pattern>/UsuriosServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

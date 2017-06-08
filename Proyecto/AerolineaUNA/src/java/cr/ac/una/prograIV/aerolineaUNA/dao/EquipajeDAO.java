@@ -87,6 +87,11 @@ public class EquipajeDAO extends HibernateUtil implements IBaseDAO<Equipaje , In
         }
        return listaEquipajes;
     }
+
+    @Override
+    public List<Equipaje> find(Integer o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }

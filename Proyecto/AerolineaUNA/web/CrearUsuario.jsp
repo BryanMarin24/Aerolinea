@@ -12,12 +12,19 @@
 
         <title> AEROLÍNEA UNA</title>
 
-
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/business-casual.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+        <!-- jQuery -->
+        <script src="js/jquery.js"></script>
 
+        <!-- Bootstrap Core JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
+
+        <link href="css/css.css" rel="stylesheet" type="text/css"/>
+        <script src="js/utils.js" type="text/javascript"></script>
+        <script src="js/gestionUsuariosJS.js" type="text/javascript"></script>
 
     </head>
 
@@ -62,7 +69,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="GestionTipoAviones.jsp">AGREGAR AVIONES</a><br><br>
-                           
+
                                 <a class="dropdown-item" href="GestionHorarios.jsp">GESTION DE HORARIOS</a><br><br>
                                 <a class="dropdown-item" href="GestionRutas.jsp">GESTION DE RUTAS</a><br><br>
                             </div>
@@ -120,44 +127,44 @@
 
                 <form class="form-horizontal">
 
-                    <div class="form-group">
+                    <div class="form-group" id="groupCorreo">
                         <label class="control-label col-xs-3">CORREO: </label>
                         <div class="col-xs-9">
-                            <input type="email" class="form-control" id="inputEmail" placeholder="Correo">
+                            <input type="email" class="form-control" id="correo" placeholder="Correo">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="groupPassword">
                         <label class="control-label col-xs-3">CONTRASEÑA</label>
                         <div class="col-xs-9">
-                            <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña">
+                            <input type="password" class="form-control" id="password" placeholder="Contraseña">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="groupNombre">
                         <label class="control-label col-xs-3">NOMBRE:</label>
                         <div class="col-xs-9">
                             <input type="text" class="form-control" id="nombre" placeholder="Nombre">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="groupPrimerApellido">
                         <label class="control-label col-xs-3">PRIMER APELLIDO:</label>
                         <div class="col-xs-9">
                             <input type="text" class="form-control" id="primerApellido" placeholder="Primer Apellido">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="groupSegundoApellido">
                         <label class="control-label col-xs-3">SEGUNDO APELLIDO:</label>
                         <div class="col-xs-9">
                             <input type="text" class="form-control" id="segundoApellido" placeholder="Segundo Apellido">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="groupTelefono1">
                         <label class="control-label col-xs-3" >TELÉFONO 1:</label>
                         <div class="col-xs-9">
                             <input type="tel" class="form-control" id="telefono1" placeholder="Telefono1">
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" id="groupTelefono2">
                         <label class="control-label col-xs-3" >TELÉFONO 2:</label>
                         <div class="col-xs-9">
                             <input type="tel" class="form-control" id="telefono2" placeholder="Telefono2">
@@ -165,14 +172,14 @@
                     </div>
 
 
-                    <div class="form-group">
+                    <div class="form-group" id="groupDireccion">
                         <label class="control-label col-xs-3">DIRECCIÓN:</label>
                         <div class="col-xs-9">
                             <textarea rows="3" class="form-control" id="direccion" placeholder="Dirección"></textarea>
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" id="groupFechaNac">
                         <label class="control-label col-xs-3">F. NACIMIENTO:</label>
                         <div class="col-xs-9">
                             <input type="date" name="fecha" id="fechaNacimiento">
@@ -194,7 +201,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </form>
 

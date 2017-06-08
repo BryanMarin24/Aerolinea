@@ -87,5 +87,10 @@ public class RutaDAO extends HibernateUtil implements IBaseDAO< Ruta, String> {
         }
        return listaRutas;
     }
+
+    @Override
+    public List<Ruta> find(String o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

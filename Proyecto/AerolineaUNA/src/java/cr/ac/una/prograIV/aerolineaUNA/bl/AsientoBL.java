@@ -1,17 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package  cr.ac.una.prograIV.aerolineaUNA.bl;
 
 import  cr.ac.una.prograIV.aerolineaUNA.domain.Asiento;
 import java.util.List;
 
-/**
- *
- * 
- */
+
 public class AsientoBL extends BaseBL implements IBaseBL<Asiento, String>{
     public AsientoBL() {
         super();
@@ -44,6 +37,11 @@ public class AsientoBL extends BaseBL implements IBaseBL<Asiento, String>{
     @Override
     public List<Asiento> findAll(String className) {
         return this.getDao(className).findAll();
+    }
+
+    @Override
+    public List<Asiento> find(String className, String o) {
+        return null;
     }
     
 }

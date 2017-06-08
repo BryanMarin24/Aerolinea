@@ -87,6 +87,11 @@ public class UsuarioDAO extends HibernateUtil implements IBaseDAO<Usuario,String
         }
        return listaUsuarios;
     }
+
+    @Override
+    public List<Usuario> find(String o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }

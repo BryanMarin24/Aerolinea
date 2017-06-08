@@ -12,6 +12,8 @@ public interface IBaseDAO<T, K> {
     public abstract void delete(T o);
 
     public abstract T findById(K key);
+    
+    public abstract List<T> find (K o);
 
     public abstract List<T> findAll();
 }

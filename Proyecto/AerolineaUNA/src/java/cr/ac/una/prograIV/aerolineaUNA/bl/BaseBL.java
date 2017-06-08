@@ -9,17 +9,13 @@ import cr.ac.una.prograIV.aerolineaUNA.dao.IBaseDAO;
 import cr.ac.una.prograIV.aerolineaUNA.dao.*;
 import java.util.LinkedHashMap;
 
-/**
- *
- * @author chgari
- */
+
 public class BaseBL {
     private final LinkedHashMap<String, IBaseDAO> daos;
 
     public BaseBL() {
         daos = new LinkedHashMap();
         daos.put("cr.ac.una.prograIV.aerolineaUNA.domain.Avion", new AvionDAO());
-        daos.put("cr.ac.una.prograIV.aerolineaUNA.domain.Equipaje", new EquipajeDAO());
         daos.put("cr.ac.una.prograIV.aerolineaUNA.domain.Asiento", new AsientoDAO());
         daos.put("cr.ac.una.prograIV.aerolineaUNA.domain.Horario", new HorarioDAO());
         daos.put("cr.ac.una.prograIV.aerolineaUNA.domain.Pago", new PagoDAO());

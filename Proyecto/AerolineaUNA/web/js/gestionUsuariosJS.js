@@ -4,7 +4,7 @@
 //******************************************************************************
 $(function () {
     //Genera el datapicker
-    $('#dpFechaNacimiento').datetimepicker({
+    $('#fechaNacimiento').datetimepicker({
         weekStart: 1,
         todayBtn: 1,
         autoclose: 1,
@@ -26,12 +26,10 @@ $(function () {
     //agrega los eventos las capas necesarias
     $("#cancelar").click(function () {
         limpiarForm();
-        $("#myModalFormulario").modal("hide");
+        $("#myModal").modal("hide");
     });
 
-    $("#btMostarForm").click(function () {
-        limpiarForm();
-    });
+    
 
 
 });
@@ -41,7 +39,7 @@ $(function () {
 //******************************************************************************
 
 $(document).ready(function () {
-    consultarPersonas();
+    consultarUsuarios();
 });
 
 //******************************************************************************
@@ -50,16 +48,16 @@ $(document).ready(function () {
 //******************************************************************************
 //******************************************************************************
 
-function consultarPersonas() {
-    mostrarModal("myModal", "Espere por favor..", "Consultando la información de personas en la base de datos");
+function consultarUsuarios() {
+    mostrarModal("myModal", "Espere por favor..", "Consultando la información de usuarios en la base de datos");
     //Se envia la información por ajax
     $.ajax({
-        url: 'PersonasServlet',
+        url: 'UsuariosServlet',
         data: {
-            accion: "consultarPersonas"
+            accion: "consultarUsuarios"
         },
         error: function () { //si existe un error en la respuesta del ajax
-            alert("Se presento un error a la hora de cargar la información de las personas en la base de datos");
+            alert("Se presento un error a la hora de cargar la información de los usuarios en la base de datos");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             dibujarTabla(data);
@@ -74,17 +72,21 @@ function consultarPersonas() {
 
 function dibujarTabla(dataJson) {
     //limpia la información que tiene la tabla
-    $("#tablaPersonas").html("");
+    $("#tablaUsuarios").html("");
 
     //muestra el enzabezado de la tabla
     var head = $("<thead />");
     var row = $("<tr />");
     head.append(row);
-    $("#tablaPersonas").append(head);
-    row.append($("<th><b>CEDULA</b></th>"));
+    $("#tablaUsuarios").append(head);
+    row.append($("<th><b>ID</b></th>"));
+    row.append($("<th><b>CORREO</b></th>"));
     row.append($("<th><b>NOMBRE</b></th>"));
     row.append($("<th><b>PRIMER APELLIDO</b></th>"));
     row.append($("<th><b>SEGUNDO APELLIDO</b></th>"));
+    row.append($("<th><b>TELEFONO 1</b></th>"));
+    row.append($("<th><b>TELEFONO 2</b></th>"));
+    row.append($("<th><b>DIRECCION</b></th>"));
     row.append($("<th><b>FEC. NAC.</b></th>"));
     row.append($("<th><b>ACCIÓN</th>"));
 
@@ -99,12 +101,15 @@ function dibujarFila(rowData) {
     //de una persona
 
     var row = $("<tr />");
-    $("#tablaPersonas").append(row);
-    row.append($("<td>" + rowData.pkCedula + "</td>"));
+    $("#tablaUsuarios").append(row);
+    row.append($("<td>" + rowData.idUsuario + "</td>"));
+    row.append($("<td>" + rowData.correo + "</td>"));
     row.append($("<td>" + rowData.nombre + "</td>"));
     row.append($("<td>" + rowData.apellido1 + "</td>"));
     row.append($("<td>" + rowData.apellido2 + "</td>"));
-    row.append($("<td>" + rowData.fecNacimiento + "</td>"));
+    row.append($("<td>" + rowData.telefonoCelular + "</td>"));
+    row.append($("<td>" + rowData.telefonoLocal + "</td>"));
+    row.append($("<td>" + rowData.fechaNacimiento + "</td>"));
     row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="consultarPersonaByID(' + rowData.pkCedula + ');">' +
             '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>' +
             '</button>' +
@@ -134,16 +139,18 @@ function enviar() {
     else {
         //Se envia la información por ajax
         $.ajax({
-            url: 'PersonasServlet',
+            url: 'UsuariosServlet',
             data: {
-                accion: $("#personasAction").val(),
-                cedula: $("#cedula").val(),
+                accion: $("#usuariosAction").val(),
+                correo: $("#correo").val(),
+                password: $("#password").val(),
                 nombre: $("#nombre").val(),
-                apellido1: $("#apellido1").val(),
-                apellido2: $("#apellido2").val(),
-                fechaNacimiento: $("#dpFechaNacimiento").data('date'),
-                sexo: $("#sexo").val(),
-                observaciones: $("#observaciones").val()
+                apellido1: $("#primerApellido").val(),
+                apellido2: $("#segundoApellido").val(),
+                telefono1: $("#telefono1").val(),
+                telefono2: $("#telefono2").val(),
+                direccion: $("#direccion").val(),
+                fechaNacimiento: $("#fechaNacimiento").data('date')
             },
             error: function () { //si existe un error en la respuesta del ajax
                 mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
@@ -153,7 +160,7 @@ function enviar() {
                 var tipoRespuesta = data.substring(0, 2);
                 if (tipoRespuesta === "C~") {
                     mostrarMensaje("alert alert-success", respuestaTxt, "Correcto!");
-                    $("#myModalFormulario").modal("hide");
+                    $("#myModal").modal("hide");
                     consultarPersonas();
                 } else {
                     if (tipoRespuesta === "E~") {
@@ -174,33 +181,52 @@ function validar() {
 
     //Elimina estilo de error en los css
     //notese que es sobre el grupo que contienen el input
-    $("#groupCedula").removeClass("has-error");
+    $("#groupCorreo").removeClass("has-error");
+    $("#groupPassword").removeClass("has-error");
     $("#groupNombre").removeClass("has-error");
-    $("#groupApellido1").removeClass("has-error");
-    $("#groupApellido2").removeClass("has-error");
-    $("#groupFechaNacimiento").removeClass("has-error");
-    $("#groupSexo").removeClass("has-error");
+    $("#groupPrimerApellido").removeClass("has-error");
+    $("#groupSegundoApellido").removeClass("has-error");
+    $("#groupTelefono1").removeClass("has-error");
+    $("#groupTelefono2").removeClass("has-error");
+    $("#groupDireccion").removeClass("has-error");
+    $("#groupFechaNac").removeClass("has-error");
+    
 
     //valida cada uno de los campos del formulario
     //Nota: Solo si fueron digitados
-    if ($("#cedula").val() === "") {
-        $("#groupCedula").addClass("has-error");
+    if ($("#correo").val() === "") {
+        $("#groupCorreo").addClass("has-error");
         validacion = false;
     }
+    
+    if ($("#password").val() === "") {
+        $("#groupPassword").addClass("has-error");
+        validacion = false;
+    }
+    
     if ($("#nombre").val() === "") {
         $("#groupNombre").addClass("has-error");
         validacion = false;
     }
-    if ($("#apellido1").val() === "") {
-        $("#groupApellido1").addClass("has-error");
+    
+    if ($("#primerApellido").val() === "") {
+        $("#groupPrimerApellido").addClass("has-error");
         validacion = false;
     }
-    if ($("#apellido2").val() === "") {
-        $("#groupApellido2").addClass("has-error");
+    if ($("#segundoApellido").val() === "") {
+        $("#groupSegundoApellido").addClass("has-error");
         validacion = false;
     }
-    if ($("#dpFechaNacimiento").data('date') === "") {
-        $("#groupFechaNacimiento").addClass("has-error");
+     if ($("#telefono1").val() === "") {
+        $("#groupTelefono1").addClass("has-error");
+        validacion = false;
+    }
+     if ($("#telefono2").val() === "") {
+        $("#groupTelefono2").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#fechaNacimiento").data('date') === "") {
+        $("#groupFechaNac").addClass("has-error");
         validacion = false;
     }
 
@@ -213,10 +239,10 @@ function validar() {
 //******************************************************************************
 //******************************************************************************
 
-function eliminarPersona(idPersona) {
-    $("#myModalTitle").html("Eliminar Persona");
-    $("#myModalMessage").html("Esta Seguro que desea Eliminar a " + idPersona + " ?");
-    $("#myModalFooter").html("<button class='btn btn-primary' onclick='eliminar(" + idPersona + ")'>Aceptar</button>" +
+function eliminarUsuario(idUsuario) {
+    $("#myModalTitle").html("Eliminar Usuario");
+    $("#myModalMessage").html("Esta Seguro que desea Eliminar a " + idUsuario + " ?");
+    $("#myModalFooter").html("<button class='btn btn-primary' onclick='eliminar(" + idUsuario + ")'>Aceptar</button>" +
             "<button  class='btn btn-danger' data-dismiss='modal' >Cancelar</button>");
     $("#myModal").modal("show");
 
@@ -229,14 +255,14 @@ function eliminarPersona(idPersona) {
 //******************************************************************************
 //******************************************************************************
 
-function consultarPersonaByID(idPersona) {
-    mostrarModal("myModal", "Espere por favor..", "Consultando la persona seleccionada");
+/*function consultarUsuarioByID(idUsuario) {
+    mostrarModal("myModal", "Espere por favor..", "Consultando el usuario seleccionada");
     //Se envia la información por ajax
     $.ajax({
-        url: 'PersonasServlet',
+        url: 'UsuariosServlet',
         data: {
-            accion: "consultarPersonasByID",
-            idPersona: idPersona
+            accion: "consultarUsuariosByID",
+            idUsuario: idUsuario
         },
         error: function () { //si existe un error en la respuesta del ajax
             cambiarMensajeModal("myModal", "Resultado acción", "Se presento un error, contactar al administador");
@@ -278,17 +304,17 @@ function consultarPersonaByID(idPersona) {
         type: 'POST',
         dataType: "json"
     });
-}
+}*/
 
-function consultarPersonasByNombre() {
-    var nombrePersona = $("#nombrePersona").val();
-    mostrarModal("myModal", "Espere por favor..", "Consultando la persona seleccionada");
+function consultarUsuariosByNombre() {
+    var nombreUsuario = $("#nombreUsuario").val();
+    mostrarModal("myModal", "Espere por favor..", "Consultando el usuario seleccionada");
     //Se envia la información por ajax
     $.ajax({
-        url: 'PersonasServlet',
+        url: 'UsuariosServlet',
         data: {
-            accion: "consultarPersonasByNombre",
-            nombrePersona: nombrePersona
+            accion: "consultarUsuariosByNombre",
+            nombreUsuario: nombreUsuario
         },
         error: function () { //si existe un error en la respuesta del ajax
             cambiarMensajeModal("myModal", "Resultado acción", "Se presento un error, contactar al administador");
@@ -325,31 +351,29 @@ function mostrarMensaje(classCss, msg, neg) {
 
 function limpiarForm() {
     //setea el focus del formulario
-    $('#cedula').focus();
-    $("#cedula").removeAttr("readonly"); //elimina el atributo de solo lectura
+    $('#correo').focus();
+    $("#correo").removeAttr("readonly"); //elimina el atributo de solo lectura
 
     //se cambia la accion por agregarPersona
-    $("#personasAction").val("agregarPersona");
+    $("#usuariosAction").val("agregarUsuario");
 
     //esconde el div del mensaje
     mostrarMensaje("hiddenDiv", "", "");
 
     //Resetear el formulario
-    $('#formPersonas').trigger("reset");
+    $('#formUsuarios').trigger("reset");
 }
 
-function validarCedula() {
-    $("#groupCedula").removeClass("has-error");
+function validarCorreo() {
+    $("#groupCorreo").removeClass("has-error");
 
-    var contenido = $("#cedula").val();
+    var contenido = $("#correo").val();
     if (isNaN(contenido)) {
-        $("#groupCedula").addClass("has-error");
+        $("#groupCorreo").addClass("has-error");
         return false;
     } else {
         return true;
     }
-
-
 }
 
 function validarTamCampos() {
@@ -357,29 +381,48 @@ function validarTamCampos() {
 
     //Elimina estilo de error en los css
     //notese que es sobre el grupo que contienen el input
-    $("#groupCedula").removeClass("has-error");
+    $("#groupCorreo").removeClass("has-error");
+    $("#groupPassword").removeClass("has-error");
     $("#groupNombre").removeClass("has-error");
-    $("#groupApellido1").removeClass("has-error");
-    $("#groupApellido2").removeClass("has-error");
+    $("#groupPrimerApellido").removeClass("has-error");
+    $("#groupSegundoApellido").removeClass("has-error");
+    $("#groupTelefono1").removeClass("has-error");
+    $("#groupTelefono2").removeClass("has-error");
+    $("#groupDireccion").removeClass("has-error");
     $("#groupFechaNacimiento").removeClass("has-error");
-    $("#groupSexo").removeClass("has-error");
 
     //valida cada uno de los campos del formulario
     //Nota: Solo si fueron digitados
-    if ($("#cedula").val().length > 11) {
-        $("#groupCedula").addClass("has-error");
+    if ($("#correo").val().length > 11) {
+        $("#groupCorreo").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#password").val().length > 45) {
+        $("#groupPassword").addClass("has-error");
         validacion = false;
     }
     if ($("#nombre").val().length > 45) {
         $("#groupNombre").addClass("has-error");
         validacion = false;
     }
-    if ($("#apellido1").val().length > 30) {
-        $("#groupApellido1").addClass("has-error");
+    if ($("#primerApellido").val().length > 45) {
+        $("#groupPrimerApellido").addClass("has-error");
         validacion = false;
     }
-    if ($("#apellido2").val().length > 30) {
-        $("#groupApellido2").addClass("has-error");
+    if ($("#segundoApellido").val().length > 45) {
+        $("#groupSegundoApellido").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#telefono1").val().length > 45) {
+        $("#groupTelefono1").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#telefono2").val().length > 45) {
+        $("#groupTelefono2").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#direccion").val().length > 45) {
+        $("#groupDireccion").addClass("has-error");
         validacion = false;
     }
 
@@ -387,13 +430,13 @@ function validarTamCampos() {
     return validacion;
 }
 
-function eliminar(idPersona) {
+function eliminar(idUsuario) {
 
     $.ajax({
-        url: 'PersonasServlet',
+        url: 'UsuariosServlet',
         data: {
-            accion: "eliminarPersonas",
-            idPersona: idPersona
+            accion: "eliminarUsuarios",
+            idPersona: idUsuario
         },
         error: function () { //si existe un error en la respuesta del ajax
             cambiarMensajeModal("myModal", "Resultado acción", "Se presento un error, contactar al administador");
@@ -405,7 +448,7 @@ function eliminar(idPersona) {
             if (tipoRespuesta === "E~") {
                 cambiarMensajeModal("myModal", "Resultado acción", respuestaTxt);
             } else {
-                setTimeout(consultarPersonas, 3000);// hace una pausa y consulta la información de la base de datos
+                setTimeout(consultarUsuarios, 3000);// hace una pausa y consulta la información de la base de datos
             }
         },
         type: 'POST',

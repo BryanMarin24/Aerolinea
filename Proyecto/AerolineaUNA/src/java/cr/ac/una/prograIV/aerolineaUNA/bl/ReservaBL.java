@@ -45,5 +45,10 @@ public class ReservaBL extends BaseBL implements IBaseBL<Reserva, Integer>{
     public List<Reserva> findAll(String className) {
         return this.getDao(className).findAll();
     }
+
+    @Override
+    public List<Reserva> find(String className, Integer o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

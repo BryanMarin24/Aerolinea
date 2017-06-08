@@ -45,5 +45,10 @@ public class HorarioBL extends BaseBL implements IBaseBL<Horario, String>{
     public List<Horario> findAll(String className) {
         return this.getDao(className).findAll();
     }
+
+    @Override
+    public List<Horario> find(String className, String o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

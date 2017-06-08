@@ -45,5 +45,10 @@ public class PagoBL extends BaseBL implements IBaseBL<Pago, Integer>{
     public List<Pago> findAll(String className) {
         return this.getDao(className).findAll();
     }
+
+    @Override
+    public List<Pago> find(String className, Integer o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

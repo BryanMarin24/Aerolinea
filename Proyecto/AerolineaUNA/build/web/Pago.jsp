@@ -17,8 +17,8 @@
         <link href="css/business-casual.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
-
-
+        <link href="css/pago.css" rel="stylesheet" type="text/css"/>
+        <script src="js/pago.js" type="text/javascript"></script>
     </head>
 
     <body>
@@ -61,7 +61,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="GestionTipoAviones.jsp">AGREGAR AVIONES</a><br><br>
-                             
+
                                 <a class="dropdown-item" href="GestionHorarios.jsp">GESTION DE HORARIOS</a><br><br>
                                 <a class="dropdown-item" href="GestionRutas.jsp">GESTION DE RUTAS</a><br><br>
                             </div>
@@ -100,7 +100,14 @@
                 </div>
 
                 <br><br>
-
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-4 col-sm-4 col-xs-4"></div>
+                        <div class="col-md-4 col-sm-4 col-xs-4 " id="tipoDeCambio"></div>
+                        <div class="col-md-4 col-sm-4 col-xs-4"></div>
+                    </div>
+                </div>
+                <br><br>
                 <div class="row">
 
                     <form action="#" class="credit-card-div">

@@ -87,5 +87,10 @@ public class HorarioDAO extends HibernateUtil implements IBaseDAO<Horario , Stri
         }
        return listaHorarios;
     }
+
+    @Override
+    public List<Horario> find(String o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

@@ -45,5 +45,10 @@ public class EquipajeBL extends BaseBL implements IBaseBL<Equipaje, Integer>{
     public List<Equipaje> findAll(String className) {
         return this.getDao(className).findAll();
     }
+
+    @Override
+    public List<Equipaje> find(String className, Integer o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
