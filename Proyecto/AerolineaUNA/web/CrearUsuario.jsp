@@ -18,12 +18,12 @@
         <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
         <!-- jQuery -->
         <script src="js/jquery.js"></script>
-        
-        
+
+
         <!-- Bootstrap Core JavaScript -->
         <script src="js/bootstrap.min.js"></script>
-        
-         <!-- ********************************************************** -->
+
+        <!-- ********************************************************** -->
         <!-- Includes para el datapicker -->
         <!-- ********************************************************** -->
         <link href="css/datetimepicker.min.css" rel="stylesheet" type="text/css"/>
@@ -186,12 +186,22 @@
                         </div>
                     </div>
 
-                    <div class="form-group" id="groupFechaNac">
+                    <!--<div class="form-group" id="groupFechaNac">
                         <label class="control-label col-xs-3">F. NACIMIENTO:</label>
                         <div class="col-xs-9">
                             <input type="date" name="fecha" id="fechaNacimiento">
                         </div>
-                    </div>  
+                    </div>--> 
+
+                    <div class="form-group" id="groupFechaNac">
+                        <label class="control-label col-xs-3">F. NACIMIENTO:</label>
+                        <div id="fechaNacimiento" class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="dtp_input2" data-link-format="dd/mm/yyyy">
+                            <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="dpfechaNacimientoText">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <input type="hidden" value="agregarUsuario" id="usuariosAction"/>
