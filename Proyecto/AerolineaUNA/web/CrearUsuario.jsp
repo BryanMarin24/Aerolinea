@@ -18,9 +18,16 @@
         <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
         <!-- jQuery -->
         <script src="js/jquery.js"></script>
-
+        
+        
         <!-- Bootstrap Core JavaScript -->
         <script src="js/bootstrap.min.js"></script>
+        
+         <!-- ********************************************************** -->
+        <!-- Includes para el datapicker -->
+        <!-- ********************************************************** -->
+        <link href="css/datetimepicker.min.css" rel="stylesheet" type="text/css"/>
+        <script src="js/datetimepicker.js" type="text/javascript"></script>
 
         <link href="css/css.css" rel="stylesheet" type="text/css"/>
         <script src="js/utils.js" type="text/javascript"></script>
