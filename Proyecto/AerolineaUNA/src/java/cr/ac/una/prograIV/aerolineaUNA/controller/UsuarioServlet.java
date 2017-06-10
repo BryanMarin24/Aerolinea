@@ -14,6 +14,10 @@ import cr.ac.una.prograIV.aerolineaUNA.domain.Ruta;
 import cr.ac.una.prograIV.aerolineaUNA.domain.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -98,12 +102,21 @@ public class UsuarioServlet extends HttpServlet {
 
                     //Se llena el objeto con los datos enviados por AJAX por el metodo post
                     
-                    p.setNombre(request.getParameter("nombre"));
+                    p.setIdUsuario(request.getParameter("idUsuario"));                    
                     p.setCorreo(request.getParameter("correo"));
                     p.setContraseña(request.getParameter("password"));
-                    
-                    
-                    
+                    p.setNombre(request.getParameter("nombre"));
+                    p.setApellido1(request.getParameter("apellido1"));
+                    p.setApellido2(request.getParameter("apellido2"));
+                    p.setTelefonoCelular(request.getParameter("telefono1"));
+                    p.setTelefonoLocal(Integer.parseInt(request.getParameter("telefono2")));
+                    p.setDireccion(request.getParameter("direccion"));
+                    String fechatxt = request.getParameter("fechaNacimiento");
+                    DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+                    Date date = format.parse(fechatxt);
+
+                    p.setFechaNacimiento(date);
+                    p.setTipo(request.getParameter("tipo"));
                     if(accion.equals("agregarUsuario")){ //es insertar personas
                         //Se guarda el objeto
                         pBL.save(p);
