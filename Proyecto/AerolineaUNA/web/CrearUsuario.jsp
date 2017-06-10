@@ -133,6 +133,13 @@
                 </div>
 
                 <form class="form-horizontal">
+                    
+                    <div class="form-group" id="groupID">
+                        <label class="control-label col-xs-3">IDENTIFICACIÓN: </label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="idUsuario" placeholder="identificación">
+                        </div>
+                    </div>
 
                     <div class="form-group" id="groupCorreo">
                         <label class="control-label col-xs-3">CORREO: </label>
