@@ -114,25 +114,14 @@
                     </div>
                 </div>
 
-                <div class="col-sm-12">
-                    <form role="form" onsubmit="return false;" id="formUsuarios" class="form-horizontal centered">
-                        <div class="form-group" id="groupID">
-                            <div class="col-sm-4" style="text-align: right; vertical-align: middle;">
-                                <p><b>Buscar por nombre del usuario:</b></p>
-                            </div>
-                            <div class="col-sm-4">
-                                <input type="text" class="form-control" id="nombreUsuario" placeholder="Digite el nombre del usuario">
-                            </div>
-                            <div class="col-sm-4">
-                                <button type="button" id="buscar" class="btn btn-info centered" >
-                                    Buscar <span class="glyphicon glyphicon-search"></span>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
                 <form class="form-horizontal">
+                    
+                    <div class="form-group" id="groupID">
+                        <label class="control-label col-xs-3">IDENTIFICACIÓN: </label>
+                        <div class="col-xs-9">
+                            <input type="text" class="form-control" id="idUsuario" placeholder="identificación">
+                        </div>
+                    </div>
 
                     <div class="form-group" id="groupCorreo">
                         <label class="control-label col-xs-3">CORREO: </label>
@@ -220,9 +209,6 @@
                         </div>
                     </div>
                 </form>
-
-                <br><br>
-                <table class="table table-hover table-condensed" id="tablaUsuarios"></table>
 
             </div>             
         </div>
