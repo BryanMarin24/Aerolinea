@@ -29,9 +29,6 @@ $(function () {
         $("#myModal").modal("hide");
     });
 
-    
-
-
 });
 
 //******************************************************************************
@@ -52,7 +49,7 @@ function consultarUsuarios() {
     mostrarModal("myModal", "Espere por favor..", "Consultando la información de usuarios en la base de datos");
     //Se envia la información por ajax
     $.ajax({
-        url: 'UsuariosServlet',
+        url: 'UsuarioServlet',
         data: {
             accion: "consultarUsuarios"
         },
@@ -139,7 +136,7 @@ function enviar() {
     else {
         //Se envia la información por ajax
         $.ajax({
-            url: 'UsuariosServlet',
+            url: 'UsuarioServlet',
             data: {
                 accion: $("#usuariosAction").val(),
                 correo: $("#correo").val(),
@@ -311,7 +308,7 @@ function consultarUsuariosByNombre() {
     mostrarModal("myModal", "Espere por favor..", "Consultando el usuario seleccionada");
     //Se envia la información por ajax
     $.ajax({
-        url: 'UsuariosServlet',
+        url: 'UsuarioServlet',
         data: {
             accion: "consultarUsuariosByNombre",
             nombreUsuario: nombreUsuario
@@ -433,7 +430,7 @@ function validarTamCampos() {
 function eliminar(idUsuario) {
 
     $.ajax({
-        url: 'UsuariosServlet',
+        url: 'UsuarioServlet',
         data: {
             accion: "eliminarUsuarios",
             idPersona: idUsuario
