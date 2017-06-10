@@ -5,12 +5,7 @@
  */
 package cr.ac.una.prograIV.aerolineaUNA.controller;
 
-import com.google.gson.Gson;
-import cr.ac.una.prograIV.aerolineaUNA.bl.HorarioBL;
-import cr.ac.una.prograIV.aerolineaUNA.bl.RutaBL;
 import cr.ac.una.prograIV.aerolineaUNA.bl.UsuarioBL;
-import cr.ac.una.prograIV.aerolineaUNA.domain.Horario;
-import cr.ac.una.prograIV.aerolineaUNA.domain.Ruta;
 import cr.ac.una.prograIV.aerolineaUNA.domain.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -67,38 +62,9 @@ public class UsuarioServlet extends HttpServlet {
             //**********************************************************************
             String accion = request.getParameter("accion");
             switch (accion) {
-                case "consultarUsuarios":
-                    json = new Gson().toJson(pBL.findAll(Usuario.class.getName()));
-                    out.print(json);
-                    break;
-                case "eliminarUsuario":
-                        String id1 = request.getParameter("idUsuario"); 
-                        p.setIdUsuario(id1);                   
-                       
-                    
-                       //Se elimina el objeto
-                        pBL.delete(p);
-                          
-
-                        //Se imprime la respuesta con el response
-                        out.print("El usuario fue eliminado correctamente");
-                 
-                    break;
-                    
-                case "consultarUsuariosByID":
-                    //se consulta la persona por ID
-                    String id = request.getParameter("idUsuario");
-                    p = pBL.findById(id);
-                    
-                    //se pasa la informacion del objeto a formato JSON
-                    json = new Gson().toJson(p);
-                    out.print(json);
-                    break;
-//                    
-//              
-                case "consultarUsuariosByName":
-                    break;
-                case "agregarUsuario": case "modificarUsuario":
+                
+                
+                case "agregarUsuario":
 
                     //Se llena el objeto con los datos enviados por AJAX por el metodo post
                     
@@ -125,15 +91,7 @@ public class UsuarioServlet extends HttpServlet {
                         //Se imprime la respuesta con el response
                         out.print("C~El usuario fue ingresado correctamente");
                         
-                    }else{//es modificar persona
-                        //Se guarda el objeto
-                        pBL.merge(p);
-                        
-
-                        //Se imprime la respuesta con el response
-                        out.print("C~El usuario fue modificado correctamente");
-                    }
-                    
+                    }               
                     break;
                     
                 default:
