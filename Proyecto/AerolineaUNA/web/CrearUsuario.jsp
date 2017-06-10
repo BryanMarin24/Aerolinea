@@ -19,13 +19,13 @@
         <!-- jQuery -->
         <script src="js/jquery.js"></script>
 
-
         <!-- Bootstrap Core JavaScript -->
         <script src="js/bootstrap.min.js"></script>
-
         <!-- ********************************************************** -->
         <!-- Includes para el datapicker -->
         <!-- ********************************************************** -->
+        
+        
         <link href="css/datetimepicker.min.css" rel="stylesheet" type="text/css"/>
         <script src="js/datetimepicker.js" type="text/javascript"></script>
 
@@ -194,7 +194,7 @@
                     </div>--> 
 
                     <div class="form-group" id="groupFechaNac">
-                        <label class="control-label col-xs-3">F. NACIMIENTO:</label>
+                        <label for="fechaNacimiento" class="control-label col-xs-3">F. NACIMIENTO:</label>
                         <div id="fechaNacimiento" class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="dtp_input2" data-link-format="dd/mm/yyyy">
                             <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="dpfechaNacimientoText">
                             <span class="input-group-addon">
@@ -226,14 +226,6 @@
 
             </div>             
         </div>
-
-
-
-        <!-- jQuery -->
-        <script src="js/jquery.js"></script>
-
-        <!-- Bootstrap Core JavaScript -->
-        <script src="js/bootstrap.min.js"></script>
 
     </body>
 
