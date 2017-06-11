@@ -38,8 +38,6 @@ function enviar() {
         mostrarMensaje("alert alert-danger", "Debe digitar los campos del formulario", "Error!");
     } else if (!validarTamCampos()) {
         mostrarMensaje("alert alert-danger", "Tamaño de los campos marcados Excedido", "Error!");
-    } else if (!validarCedula()) {
-        mostrarMensaje("alert alert-danger", "Formato de cedula Erroneo, solo numeros permitidos", "Error!");
     } else {
         //Se envia la información por ajax
         $.ajax({
@@ -47,16 +45,16 @@ function enviar() {
             data: {
                 accion: $("#usuariosAction").val(),
                 idUsuario: $("idUsuario").val(),
-                correo: $("#correo").val(),
                 password: $("#password").val(),
-                nombre: $("#nombre").val(),
+                nombre: $("#nombre").val(), 
                 apellido1: $("#primerApellido").val(),
                 apellido2: $("#segundoApellido").val(),
-                telefono1: $("#telefono1").val(),
-                telefono2: $("#telefono2").val(),
-                direccion: $("#direccion").val(),
+                correo: $("#correo").val(),
                 fechaNacimiento: $("#fechaNacimiento").data('date'),
-                tipo: "administrador"
+                direccion: $("#direccion").val(),
+                telefono1: $("#telefono1").val(),
+                telefono2: $("#telefono2").val(),       
+                tipo: "admi"  
             },
             error: function () { //si existe un error en la respuesta del ajax
                 mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
@@ -67,7 +65,7 @@ function enviar() {
                 if (tipoRespuesta === "C~") {
                     mostrarMensaje("alert alert-success", respuestaTxt, "Correcto!");
                     $("#myModal").modal("hide");
-                    consultarPersonas();
+
                 } else {
                     if (tipoRespuesta === "E~") {
                         mostrarMensaje("alert alert-danger", respuestaTxt, "Error!");
@@ -75,7 +73,6 @@ function enviar() {
                         mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador", "Error!");
                     }
                 }
-
             },
             type: 'POST'
         });
@@ -105,7 +102,7 @@ function validar() {
         $("#groupID").addClass("has-error");
         validacion = false;
     }
-    
+
     if ($("#correo").val() === "") {
         $("#groupCorreo").addClass("has-error");
         validacion = false;
@@ -167,10 +164,10 @@ function mostrarMensaje(classCss, msg, neg) {
 
 function limpiarForm() {
     //setea el focus del formulario
-    $('#correo').focus();
-    $("#correo").removeAttr("readonly"); //elimina el atributo de solo lectura
+    $('#idUsuario').focus();
+    $("#idUsuario").removeAttr("readonly"); //elimina el atributo de solo lectura
 
-    //se cambia la accion por agregarPersona
+    //se cambia la accion por agregarUsuario
     $("#usuariosAction").val("agregarUsuario");
 
     //esconde el div del mensaje
@@ -180,12 +177,12 @@ function limpiarForm() {
     $('#formUsuarios').trigger("reset");
 }
 
-function validarCorreo() {
-    $("#groupCorreo").removeClass("has-error");
+function validarIdentificacion() {
+    $("#groupID").removeClass("has-error");
 
-    var contenido = $("#correo").val();
+    var contenido = $("#idUsuario").val();
     if (isNaN(contenido)) {
-        $("#groupCorreo").addClass("has-error");
+        $("#groupID").addClass("has-error");
         return false;
     } else {
         return true;
@@ -197,6 +194,7 @@ function validarTamCampos() {
 
     //Elimina estilo de error en los css
     //notese que es sobre el grupo que contienen el input
+    $("#groupID").removeClass("has-error");
     $("#groupCorreo").removeClass("has-error");
     $("#groupPassword").removeClass("has-error");
     $("#groupNombre").removeClass("has-error");
@@ -205,10 +203,15 @@ function validarTamCampos() {
     $("#groupTelefono1").removeClass("has-error");
     $("#groupTelefono2").removeClass("has-error");
     $("#groupDireccion").removeClass("has-error");
-    $("#groupFechaNacimiento").removeClass("has-error");
+    $("#groupFechaNac").removeClass("has-error");
 
     //valida cada uno de los campos del formulario
     //Nota: Solo si fueron digitados
+
+    if ($("#idUsuario").val().length > 11) {
+        $("#groupID").addClass("has-error");
+        validacion = false;
+    }
     if ($("#correo").val().length > 11) {
         $("#groupCorreo").addClass("has-error");
         validacion = false;
