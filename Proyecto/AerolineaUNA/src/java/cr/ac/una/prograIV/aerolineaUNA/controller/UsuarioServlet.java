@@ -9,6 +9,7 @@ import cr.ac.una.prograIV.aerolineaUNA.bl.UsuarioBL;
 import cr.ac.una.prograIV.aerolineaUNA.domain.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,10 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Elberth
- */
 public class UsuarioServlet extends HttpServlet {
 
     /**
@@ -40,70 +37,64 @@ public class UsuarioServlet extends HttpServlet {
         try {
             //String para guardar el JSON generaro por al libreria GSON
             String json;
-            
-            //Se crea el objeto Persona
+
+            //Se crea el objeto Usuario
             Usuario p = new Usuario();
 
             //Se crea el objeto de la logica de negocio
             UsuarioBL pBL = new UsuarioBL();
-                 
-            
+
             //Se hace una pausa para ver el modal
             Thread.sleep(1000);
-          
-            
+
             //**********************************************************************
             //se toman los datos de la session
             //**********************************************************************
             HttpSession session = request.getSession();
-            
+
             //**********************************************************************
             //se consulta cual accion se desea realizar
             //**********************************************************************
             String accion = request.getParameter("accion");
+            
             switch (accion) {
-                
-                
-                case "agregarUsuario":
 
-                    //Se llena el objeto con los datos enviados por AJAX por el metodo post
+                case "agregarUsuario":
                     
-                    p.setIdUsuario(request.getParameter("idUsuario"));                    
-                    p.setCorreo(request.getParameter("correo"));
+                    //Se llena el objeto con los datos enviados por AJAX por el metodo post
+                    p.setIdUsuario(request.getParameter("idUsuario"));
                     p.setContraseña(request.getParameter("password"));
                     p.setNombre(request.getParameter("nombre"));
                     p.setApellido1(request.getParameter("apellido1"));
                     p.setApellido2(request.getParameter("apellido2"));
-                    p.setTelefonoCelular(request.getParameter("telefono1"));
-                    p.setTelefonoLocal(Integer.parseInt(request.getParameter("telefono2")));
-                    p.setDireccion(request.getParameter("direccion"));
+                    p.setCorreo(request.getParameter("correo"));
                     String fechatxt = request.getParameter("fechaNacimiento");
                     DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
                     Date date = format.parse(fechatxt);
-
-                    p.setFechaNacimiento(date);
+                    p.setFechaNacimiento(date);      
+                    p.setDireccion(request.getParameter("direccion"));
+                    p.setTelefonoLocal(Integer.parseInt(request.getParameter("telefono1")));
+                    p.setTelefonoCelular(request.getParameter("telefono2"));
                     p.setTipo(request.getParameter("tipo"));
-                    if(accion.equals("agregarUsuario")){ //es insertar personas
-                        //Se guarda el objeto
-                        pBL.save(p);
-                        
-
-                        //Se imprime la respuesta con el response
-                        out.print("C~El usuario fue ingresado correctamente");
-                        
-                    }               
-                    break;
                     
+                    //Se guarda el objeto
+                    pBL.save(p);
+
+                    //Se imprime la respuesta con el response
+                    out.print("C~El usuario fue ingresado correctamente");
+
+                    break;
+
                 default:
                     out.print("E~No se indico la acción que se desea realizare");
                     break;
             }
 
         } catch (NumberFormatException e) {
-           
+
             out.print("E~" + e.getMessage());
         } catch (Exception e) {
-            
+
             out.print("E~" + e.getMessage());
         }
     }
