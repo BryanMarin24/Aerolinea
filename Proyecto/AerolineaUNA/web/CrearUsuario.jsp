@@ -175,12 +175,6 @@
                         </div>
                     </div>
 
-                    <!--<div class="form-group" id="groupFechaNac">
-                        <label class="control-label col-xs-3">F. NACIMIENTO:</label>
-                        <div class="col-xs-9">
-                            <input type="date" name="fecha" id="fechaNacimiento">
-                        </div>
-                    </div>--> 
 
                     <div class="form-group" id="groupFechaNac">
                         <label for="fechaNacimiento" class="control-label col-xs-3">F. NACIMIENTO:</label>
