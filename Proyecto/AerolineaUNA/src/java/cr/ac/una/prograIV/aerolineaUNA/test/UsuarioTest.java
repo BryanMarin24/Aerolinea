@@ -14,11 +14,11 @@ public class UsuarioTest {
 
     public static void main(String[] args) {
 
-        /*Usuario u = new Usuario("002", "pass", "bryan", "marin", "leon", "brmarin@gmail.com", new Date(), "heredia", 22448877, "86568543","administrador");
+        Usuario u = new Usuario("009", "pass", "bryan", "marin", "leon", "brmarin@gmail", new Date(38787), "heredia", 22448877, "86568543","gij");
         UsuarioDAO uDao = new UsuarioDAO();
-        uDao.save(u);*/
-         /*UsuarioBL bl = new UsuarioBL();
-         Usuario p1 = new  Usuario("002", "pass", "bryan", "marin", "leon", "brmarin@gmail.com", new Date(), "heredia", 22448877, "86568543","administrador");
-         bl.merge(p1);*/
+        uDao.save(u);
+         UsuarioBL bl = new UsuarioBL();
+         Usuario p1 = new  Usuario("004", "pass", "bryan", "marin", "leon", "brmarin@gmail.com", new Date(), "heredia", 22448877, "86568543","admi");
+         bl.merge(p1);
     }
 }
