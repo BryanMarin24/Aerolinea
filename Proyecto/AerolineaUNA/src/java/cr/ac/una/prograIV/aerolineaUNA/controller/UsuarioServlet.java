@@ -1,10 +1,14 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package cr.ac.una.prograIV.aerolineaUNA.controller;
 
 import cr.ac.una.prograIV.aerolineaUNA.bl.UsuarioBL;
 import cr.ac.una.prograIV.aerolineaUNA.domain.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -14,6 +18,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 
 public class UsuarioServlet extends HttpServlet {
 
@@ -51,11 +56,11 @@ public class UsuarioServlet extends HttpServlet {
             //se consulta cual accion se desea realizar
             //**********************************************************************
             String accion = request.getParameter("accion");
-            
+
             switch (accion) {
 
                 case "agregarUsuario":
-                    
+
                     //Se llena el objeto con los datos enviados por AJAX por el metodo post
                     p.setIdUsuario(request.getParameter("idUsuario"));
                     p.setContraseña(request.getParameter("password"));
@@ -66,12 +71,12 @@ public class UsuarioServlet extends HttpServlet {
                     String fechatxt = request.getParameter("fechaNacimiento");
                     DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
                     Date date = format.parse(fechatxt);
-                    p.setFechaNacimiento(date);      
+                    p.setFechaNacimiento(date);
                     p.setDireccion(request.getParameter("direccion"));
                     p.setTelefonoLocal(Integer.parseInt(request.getParameter("telefono1")));
                     p.setTelefonoCelular(request.getParameter("telefono2"));
                     p.setTipo(request.getParameter("tipo"));
-                    
+
                     //Se guarda el objeto
                     pBL.save(p);
 

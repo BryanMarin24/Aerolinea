@@ -43,27 +43,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ObtenerIndicadoresEconomicos }
-     * 
-     */
-    public ObtenerIndicadoresEconomicos createObtenerIndicadoresEconomicos() {
-        return new ObtenerIndicadoresEconomicos();
-    }
-
-    /**
      * Create an instance of {@link ObtenerIndicadoresEconomicosResponse.ObtenerIndicadoresEconomicosResult }
      * 
      */
     public ObtenerIndicadoresEconomicosResponse.ObtenerIndicadoresEconomicosResult createObtenerIndicadoresEconomicosResponseObtenerIndicadoresEconomicosResult() {
         return new ObtenerIndicadoresEconomicosResponse.ObtenerIndicadoresEconomicosResult();
-    }
-
-    /**
-     * Create an instance of {@link ObtenerIndicadoresEconomicosXML }
-     * 
-     */
-    public ObtenerIndicadoresEconomicosXML createObtenerIndicadoresEconomicosXML() {
-        return new ObtenerIndicadoresEconomicosXML();
     }
 
     /**
@@ -80,6 +64,22 @@ public class ObjectFactory {
      */
     public DataSet createDataSet() {
         return new DataSet();
+    }
+
+    /**
+     * Create an instance of {@link ObtenerIndicadoresEconomicos }
+     * 
+     */
+    public ObtenerIndicadoresEconomicos createObtenerIndicadoresEconomicos() {
+        return new ObtenerIndicadoresEconomicos();
+    }
+
+    /**
+     * Create an instance of {@link ObtenerIndicadoresEconomicosXML }
+     * 
+     */
+    public ObtenerIndicadoresEconomicosXML createObtenerIndicadoresEconomicosXML() {
+        return new ObtenerIndicadoresEconomicosXML();
     }
 
     /**

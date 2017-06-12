@@ -24,8 +24,8 @@
         <!-- ********************************************************** -->
         <!-- Includes para el datapicker -->
         <!-- ********************************************************** -->
-        
-        
+
+
         <link href="css/datetimepicker.min.css" rel="stylesheet" type="text/css"/>
         <script src="js/datetimepicker.js" type="text/javascript"></script>
 
@@ -114,8 +114,7 @@
                     </div>
                 </div>
 
-                <form class="form-horizontal">
-                    
+               <form role="form" onsubmit="return false;" id="formUsuarios" class="form-horizontal centered">
                     <div class="form-group" id="groupID">
                         <label class="control-label col-xs-3">IDENTIFICACIÓN: </label>
                         <div class="col-xs-9">

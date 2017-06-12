@@ -261,7 +261,7 @@ function enviar() {
                 var tipoRespuesta = data.substring(0, 2);
                 if (tipoRespuesta === "C~") {
                     if($("#horariosAction").val() == "agregarHorario")
-                    mostrarModal("myModal", "Exito", "Horario agregada Correctamente!","true");
+                        mostrarModal("myModal", "Exito", "Horario agregada Correctamente!", "true");
                 else
                     mostrarModal("myModal", "Exito", "Horario Modificada Correctamente!","true");
                 

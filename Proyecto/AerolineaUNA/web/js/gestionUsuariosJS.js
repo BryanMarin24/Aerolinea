@@ -22,7 +22,6 @@ $(function () {
     //agrega los eventos las capas necesarias
     $("#cancelar").click(function () {
         limpiarForm();
-        $("#myModal").modal("hide");
     });
 
 });
@@ -63,8 +62,7 @@ function enviar() {
                 var respuestaTxt = data.substring(2);
                 var tipoRespuesta = data.substring(0, 2);
                 if (tipoRespuesta === "C~") {
-                    mostrarMensaje("alert alert-success", respuestaTxt, "Correcto!");
-                    $("#myModal").modal("hide");
+                    mostrarModal("myModal", "Exito", "Usuario registrado correctamente!","true");
 
                 } else {
                     if (tipoRespuesta === "E~") {

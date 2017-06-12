@@ -4,6 +4,10 @@
         <servlet-name>RutaServlet</servlet-name>
         <servlet-class>cr.ac.una.prograIV.aerolineaUNA.controller.RutaServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UsuarioServlet</servlet-name>
+        <servlet-class>cr.ac.una.prograIV.aerolineaUNA.controller.UsuarioServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RutaServlet</servlet-name>
         <url-pattern>/RutaServlet</url-pattern>
@@ -32,14 +36,9 @@
         <servlet-name>PagoServlet</servlet-name>
         <url-pattern>/PagoServlet</url-pattern>
     </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>UsuariosServlet</servlet-name>
-        <servlet-class>cr.ac.una.prograIV.aerolineaUNA.controller.UsuariosServlet</servlet-class>
-    </servlet>
     <servlet-mapping>
-        <servlet-name>UsuariosServlet</servlet-name>
-        <url-pattern>/UsuriosServlet</url-pattern>
+        <servlet-name>UsuarioServlet</servlet-name>
+        <url-pattern>/UsuarioServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
