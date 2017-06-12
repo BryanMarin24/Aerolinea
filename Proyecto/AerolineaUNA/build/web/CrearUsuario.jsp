@@ -36,6 +36,22 @@
     </head>
 
     <body>
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" id="myModalTitle">Modal Header</h4>
+                    </div>
+                    <div class="modal-body" id="myModalMessage">
+                        <p>This is a small modal.</p>
+                    </div>
+                    <div class="modal-footer" id="myModalFooter">
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="page-header">
             <div class="brand"> AEROLÍNEA UNA </div>
             <div class="address-bar">COSTA RICA | HEREDIA | LAGUNILLA</div>
@@ -114,53 +130,53 @@
                     </div>
                 </div>
 
-               <form role="form" onsubmit="return false;" id="formUsuarios" class="form-horizontal centered">
+                <form role="form" onsubmit="return false;" class="form-horizontal" id="formUsuario">
                     <div class="form-group" id="groupID">
-                        <label class="control-label col-xs-3">IDENTIFICACIÓN: </label>
+                        <label for="idUsuario" class="control-label col-xs-3">IDENTIFICACIÓN: </label>
                         <div class="col-xs-9">
                             <input type="text" class="form-control" id="idUsuario" placeholder="identificación">
                         </div>
                     </div>
 
                     <div class="form-group" id="groupCorreo">
-                        <label class="control-label col-xs-3">CORREO: </label>
+                        <label for="correo" class="control-label col-xs-3">CORREO: </label>
                         <div class="col-xs-9">
                             <input type="email" class="form-control" id="correo" placeholder="Correo">
                         </div>
                     </div>
                     <div class="form-group" id="groupPassword">
-                        <label class="control-label col-xs-3">CONTRASEÑA</label>
+                        <label for="password" class="control-label col-xs-3">CONTRASEÑA</label>
                         <div class="col-xs-9">
                             <input type="password" class="form-control" id="password" placeholder="Contraseña">
                         </div>
                     </div>
                     <div class="form-group" id="groupNombre">
-                        <label class="control-label col-xs-3">NOMBRE:</label>
+                        <label for="nombre" class="control-label col-xs-3">NOMBRE:</label>
                         <div class="col-xs-9">
                             <input type="text" class="form-control" id="nombre" placeholder="Nombre">
                         </div>
                     </div>
                     <div class="form-group" id="groupPrimerApellido">
-                        <label class="control-label col-xs-3">PRIMER APELLIDO:</label>
+                        <label for="primerApellido" class="control-label col-xs-3">PRIMER APELLIDO:</label>
                         <div class="col-xs-9">
                             <input type="text" class="form-control" id="primerApellido" placeholder="Primer Apellido">
                         </div>
                     </div>
                     <div class="form-group" id="groupSegundoApellido">
-                        <label class="control-label col-xs-3">SEGUNDO APELLIDO:</label>
+                        <label for="segundoApellido" class="control-label col-xs-3">SEGUNDO APELLIDO:</label>
                         <div class="col-xs-9">
                             <input type="text" class="form-control" id="segundoApellido" placeholder="Segundo Apellido">
                         </div>
                     </div>
                     <div class="form-group" id="groupTelefono1">
-                        <label class="control-label col-xs-3" >TELÉFONO 1:</label>
+                        <label for="telefono1" class="control-label col-xs-3" >TELÉFONO 1:</label>
                         <div class="col-xs-9">
                             <input type="tel" class="form-control" id="telefono1" placeholder="Telefono1">
                         </div>
                     </div>
 
                     <div class="form-group" id="groupTelefono2">
-                        <label class="control-label col-xs-3" >TELÉFONO 2:</label>
+                        <label for="telefono2" class="control-label col-xs-3" >TELÉFONO 2:</label>
                         <div class="col-xs-9">
                             <input type="tel" class="form-control" id="telefono2" placeholder="Telefono2">
                         </div>
@@ -168,7 +184,7 @@
 
 
                     <div class="form-group" id="groupDireccion">
-                        <label class="control-label col-xs-3">DIRECCIÓN:</label>
+                        <label for="direccion" class="control-label col-xs-3">DIRECCIÓN:</label>
                         <div class="col-xs-9">
                             <textarea rows="3" class="form-control" id="direccion" placeholder="Dirección"></textarea>
                         </div>

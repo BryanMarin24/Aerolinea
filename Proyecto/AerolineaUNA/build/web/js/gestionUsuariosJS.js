@@ -26,6 +26,19 @@ $(function () {
 
 });
 
+function mostrarMensaje(classCss, msg, neg) {
+    //se le eliminan los estilos al mensaje
+    $("#mesajeResult").removeClass();
+
+    //se setean los estilos
+    $("#mesajeResult").addClass(classCss);
+
+    //se muestra la capa del mensaje con los parametros del metodo
+    $("#mesajeResult").fadeIn("slow");
+    $("#mesajeResultNeg").html(neg);
+    $("#mesajeResultText").html(msg);
+    $("#mesajeResultText").html(msg);
+}
 //******************************************************************************
 //******************************************************************************
 //El metodo enviar funciona tanto para el insertar como para el modificar
@@ -45,15 +58,15 @@ function enviar() {
                 accion: $("#usuariosAction").val(),
                 idUsuario: $("idUsuario").val(),
                 password: $("#password").val(),
-                nombre: $("#nombre").val(), 
+                nombre: $("#nombre").val(),
                 apellido1: $("#primerApellido").val(),
                 apellido2: $("#segundoApellido").val(),
                 correo: $("#correo").val(),
                 fechaNacimiento: $("#fechaNacimiento").data('date'),
                 direccion: $("#direccion").val(),
                 telefono1: $("#telefono1").val(),
-                telefono2: $("#telefono2").val(),       
-                tipo: "admi"  
+                telefono2: $("#telefono2").val(),
+                tipo: "admi"
             },
             error: function () { //si existe un error en la respuesta del ajax
                 mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
@@ -62,8 +75,8 @@ function enviar() {
                 var respuestaTxt = data.substring(2);
                 var tipoRespuesta = data.substring(0, 2);
                 if (tipoRespuesta === "C~") {
-                    mostrarModal("myModal", "Exito", "Usuario registrado correctamente!","true");
-
+                    mostrarModal("myModal", "Exito", "Usuario agregado Correctamente!", "true");
+                    limpiarForm();
                 } else {
                     if (tipoRespuesta === "E~") {
                         mostrarMensaje("alert alert-danger", respuestaTxt, "Error!");
@@ -143,19 +156,7 @@ function validar() {
 //******************************************************************************
 //******************************************************************************
 
-function mostrarMensaje(classCss, msg, neg) {
-    //se le eliminan los estilos al mensaje
-    $("#mesajeResult").removeClass();
 
-    //se setean los estilos
-    $("#mesajeResult").addClass(classCss);
-
-    //se muestra la capa del mensaje con los parametros del metodo
-    $("#mesajeResult").fadeIn("slow");
-    $("#mesajeResultNeg").html(neg);
-    $("#mesajeResultText").html(msg);
-    $("#mesajeResultText").html(msg);
-}
 
 //******************************************************************************
 //******************************************************************************
@@ -163,19 +164,19 @@ function mostrarMensaje(classCss, msg, neg) {
 function limpiarForm() {
     //setea el focus del formulario
     $('#idUsuario').focus();
-    $("#idUsuario").removeAttr("readonly"); //elimina el atributo de solo lectura
-
-    //se cambia la accion por agregarUsuario
+    $("#cancelar").addClass("hidden");
+    //se cambia la accion por agregarPersona
     $("#usuariosAction").val("agregarUsuario");
+    $("#idUsuario").removeAttr("readonly");
 
     //esconde el div del mensaje
     mostrarMensaje("hiddenDiv", "", "");
 
     //Resetear el formulario
-    $('#formUsuarios').trigger("reset");
+    $('#formUsuario').trigger("reset");
 }
 
-function validarIdentificacion() {
+/*function validarIdentificacion() {
     $("#groupID").removeClass("has-error");
 
     var contenido = $("#idUsuario").val();
@@ -185,7 +186,7 @@ function validarIdentificacion() {
     } else {
         return true;
     }
-}
+}*/
 
 function validarTamCampos() {
     var validacion = true;
@@ -201,7 +202,7 @@ function validarTamCampos() {
     $("#groupTelefono1").removeClass("has-error");
     $("#groupTelefono2").removeClass("has-error");
     $("#groupDireccion").removeClass("has-error");
-    $("#groupFechaNac").removeClass("has-error");
+
 
     //valida cada uno de los campos del formulario
     //Nota: Solo si fueron digitados

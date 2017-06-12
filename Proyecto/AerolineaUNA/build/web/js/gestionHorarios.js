@@ -1,24 +1,24 @@
 
 
 $(document).ready(function () {
-  consultarHorarios();
-     $("#myPager").html(""); 
-     $('#myTable').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:7});
+    consultarHorarios();
+    $("#myPager").html("");
+    $('#myTable').pageMe({pagerSelector: '#myPager', showPrevNext: true, hidePageNumbers: false, perPage: 7});
 });
 
 
 $(function () {
- $("#enviar").click(function () {
+    $("#enviar").click(function () {
         enviar();
     });
-    
- $("#cancelar").click(function () {
-    limpiarForm();
-        });
+
+    $("#cancelar").click(function () {
+        limpiarForm();
     });
+});
 
 function consultarRutas() {
-    mostrarModal("myModal", "Espere por favor..", "Consultando la información de rutas en la base de datos","false");
+    mostrarModal("myModal", "Espere por favor..", "Consultando la información de rutas en la base de datos", "false");
     //Se envia la información por ajax
     $.ajax({
         url: 'RutaServlet',
@@ -29,7 +29,7 @@ function consultarRutas() {
             alert("Se presento un error a la hora de cargar la información de las rutas en la base de datos");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-           // anadirRutasSelect(data);
+            // anadirRutasSelect(data);
             ocultarModal("myModal");
 
         },
@@ -40,17 +40,17 @@ function consultarRutas() {
 
 function anadirRutasSelect(dataJson) {
     //limpia la información que tiene la tabla
-    $("#idRuta").html(""); 
-    
+    $("#idRuta").html("");
+
     for (var i = 0; i < dataJson.length; i++) {
-        if(dataJson[i].idHorario == null){
-         $("#idRuta").append("<option value='"+dataJson[i].idRuta+"'>"+dataJson[i].idRuta+"</option>");
-    }
+        if (dataJson[i].idHorario == null) {
+            $("#idRuta").append("<option value='" + dataJson[i].idRuta + "'>" + dataJson[i].idRuta + "</option>");
+        }
     }
 }
 
 function consultarHorarios() {
-    mostrarModal("myModal", "Espere por favor..", "Consultando la información de Horarios en la base de datos","false");
+    mostrarModal("myModal", "Espere por favor..", "Consultando la información de Horarios en la base de datos", "false");
     //Se envia la información por ajax
     $.ajax({
         url: 'HorarioServlet',
@@ -69,30 +69,30 @@ function consultarHorarios() {
         type: 'POST',
         dataType: "json"
     });
-     $("#myPager").html(""); 
-     $('#myTable').pageMe({pagerSelector:'#myPager',showPrevNext:true,hidePageNumbers:false,perPage:7});
+    $("#myPager").html("");
+    $('#myTable').pageMe({pagerSelector: '#myPager', showPrevNext: true, hidePageNumbers: false, perPage: 7});
 
-    
+
 }
 
 function dibujarTabla(dataJson) {
     //limpia la información que tiene la tabla
-    $("#tablaHorarios").html(""); 
-    
+    $("#tablaHorarios").html("");
+
     //muestra el enzabezado de la tabla
     var head = $("<thead />");
     var row = $("<tr />");
     var body = "<tbody id='myTable'></tbody>";
     head.append(row);
-    $("#tablaHorarios").append(head); 
-    $("#tablaHorarios").append(body); 
+    $("#tablaHorarios").append(head);
+    $("#tablaHorarios").append(body);
     row.append($("<th><b>ID</b></th>"));
     //row.append($("<th><b>ID RUTA</b></th>"));
     row.append($("<th><b>FECHA SALIDA</b></th>"));
     //row.append($("<th><b>FECHA LLEGADA</b></th>"));
     //row.append($("<th><b>COSTO</b></th>"));
     row.append($("<th><b>ACCION</b></th>"));
-    
+
     //carga la tabla con el json devuelto
     for (var i = 0; i < dataJson.length; i++) {
         dibujarFila(dataJson[i]);
@@ -102,28 +102,29 @@ function dibujarTabla(dataJson) {
 function dibujarFila(rowData) {
     //Cuando dibuja la tabla en cada boton se le agrega la funcionalidad de cargar o eliminar la informacion
     //de una persona
-    var ruta =consultaRutaHorario(rowData.idHorario);
+    var ruta = consultaRutaHorario(rowData.idHorario);
     var row = $("<tr />");
-    $("#myTable").append(row); 
+    $("#myTable").append(row);
     row.append($("<td>" + rowData.idHorario + "</td>"));
-   // row.append($("<td>" + ruta.idRuta + "</td>"));
-    row.append($("<td>" + rowData.dia +" a las "+rowData.hora+ "</td>"));
-   // var llegada = consultarLlegada(rowData.dia,rowData.hora);
-   // row.append($("<td> $" + llegada + "</td>"));
+    // row.append($("<td>" + ruta.idRuta + "</td>"));
+    row.append($("<td>" + rowData.dia + " a las " + rowData.hora + "</td>"));
+    // var llegada = consultarLlegada(rowData.dia,rowData.hora);
+    // row.append($("<td> $" + llegada + "</td>"));
     //row.append($("<td> $" + ruta.costo +"min</td>"));
-    row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="consultarHorarioByID('+"'"+rowData.idHorario+"'"+');">'+
-                        '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>'+
-                    '</button>'+
-                    '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="eliminarHorario('+"'"+rowData.idHorario+"'"+');">'+
-                        '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>'+
-                    '</button></td>'));
+    row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="consultarHorarioByID(' + "'" + rowData.idHorario + "'" + ');">' +
+            '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>' +
+            '</button>' +
+            '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="eliminarHorario(' + "'" + rowData.idHorario + "'" + ');">' +
+            '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>' +
+            '</button></td>'));
 }
 
-function consultarLlegada(dia,hora){
+function consultarLlegada(dia, hora) {
     return " n / d";
 }
 
-function consultaRutaHorario(idH){ $.ajax({
+function consultaRutaHorario(idH) {
+    $.ajax({
         url: 'RutaServlet',
         data: {
             accion: 'consultarRutas'
@@ -133,11 +134,11 @@ function consultaRutaHorario(idH){ $.ajax({
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             for (var i = 0; i < data.length; i++) {
-        if(data[i].idHorario == idH)
-            return data[i];
-        
-       }
-            
+                if (data[i].idHorario == idH)
+                    return data[i];
+
+            }
+
 
         },
         type: 'POST',
@@ -160,17 +161,17 @@ function mostrarMensaje(classCss, msg, neg) {
 }
 
 function eliminarHorario(idHorario) {
-   $("#myModalTitle").html("Eliminar Horario");
-     $("#myModalMessage").html("Esta Seguro que desea Eliminar Horario "+idHorario+" ?");
-      $("#myModalFooter").html('<button class="btn btn-primary" onclick="eliminar('+"'"+idHorario+"'"+');">Aceptar</button>'+
-              "<button  class='btn btn-danger' data-dismiss='modal' >Cancelar</button>");
-         $("#myModal").modal("show");
-        
+    $("#myModalTitle").html("Eliminar Horario");
+    $("#myModalMessage").html("Esta Seguro que desea Eliminar Horario " + idHorario + " ?");
+    $("#myModalFooter").html('<button class="btn btn-primary" onclick="eliminar(' + "'" + idHorario + "'" + ');">Aceptar</button>' +
+            "<button  class='btn btn-danger' data-dismiss='modal' >Cancelar</button>");
+    $("#myModal").modal("show");
+
 
 }
 
 function consultarHorarioByID(idHorario) {
-    mostrarModal("myModal", "Espere por favor..", "Consultando el horario seleccionado","false");
+    mostrarModal("myModal", "Espere por favor..", "Consultando el horario seleccionado", "false");
     //Se envia la información por ajax
     $.ajax({
         url: 'HorarioServlet',
@@ -179,28 +180,28 @@ function consultarHorarioByID(idHorario) {
             idHorario: idHorario
         },
         error: function () { //si existe un error en la respuesta del ajax
-            cambiarMensajeModal("myModal","Resultado acción","Se presento un error, contactar al administador");
+            cambiarMensajeModal("myModal", "Resultado acción", "Se presento un error, contactar al administador");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             // se oculta el mensaje de espera
             ocultarModal("myModal");
             limpiarForm();
-       
-            
+
+
             //************************************************************************
             //carga información de la persona en el formulario
             //************************************************************************
             //se indicar que la cédula es solo readOnly
             $("#identificador").attr('readonly', 'readonly');
-            
+
             //se modificar el hidden que indicar el tipo de accion que se esta realizando
-            $("#horariosAction").val("modificarHorario"); 
+            $("#horariosAction").val("modificarHorario");
             $("#cancelar").removeClass("hidden");
             //se carga la información en el formulario
             $("#identificador").val(data.idHorario);
             $("#dia").val(data.dia);
             $("#hora").val(data.hora);
-            
+
         },
         type: 'POST',
         dataType: "json"
@@ -208,7 +209,7 @@ function consultarHorarioByID(idHorario) {
 }
 
 function eliminar(idHorario) {
-    
+
     $.ajax({
         url: 'HorarioServlet',
         data: {
@@ -216,15 +217,15 @@ function eliminar(idHorario) {
             idHorario: idHorario
         },
         error: function () { //si existe un error en la respuesta del ajax
-            cambiarMensajeModal("myModal","Resultado acción","Se presento un error, contactar al administador");
+            cambiarMensajeModal("myModal", "Resultado acción", "Se presento un error, contactar al administador");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             // se cambia el mensaje del modal por la respuesta del ajax
             var respuestaTxt = data.substring(2);
             var tipoRespuesta = data.substring(0, 2);
             if (tipoRespuesta === "E~") {
-                cambiarMensajeModal("myModal","Resultado acción",respuestaTxt);
-            }else{
+                cambiarMensajeModal("myModal", "Resultado acción", respuestaTxt);
+            } else {
                 setTimeout(consultarHorarios, 3000);// hace una pausa y consulta la información de la base de datos
             }
         },
@@ -234,14 +235,14 @@ function eliminar(idHorario) {
 }
 
 function enviar() {
-    
-    if(!validar()){
+
+    if (!validar()) {
         mostrarMensaje("alert alert-danger", "Debe digitar los campos del formulario", "Error!");
     }
-    else if(!validarTamCampos()){
+    else if (!validarTamCampos()) {
         mostrarMensaje("alert alert-danger", "Tamaño de los campos marcados Excedido", "Error!");
     }
-    
+
     else {
         //Se envia la información por ajax
         $.ajax({
@@ -260,13 +261,13 @@ function enviar() {
                 var respuestaTxt = data.substring(2);
                 var tipoRespuesta = data.substring(0, 2);
                 if (tipoRespuesta === "C~") {
-                    if($("#horariosAction").val() == "agregarHorario")
+                    if ($("#horariosAction").val() == "agregarHorario")
                         mostrarModal("myModal", "Exito", "Horario agregada Correctamente!", "true");
-                else
-                    mostrarModal("myModal", "Exito", "Horario Modificada Correctamente!","true");
-                
+                    else
+                        mostrarModal("myModal", "Exito", "Horario Modificada Correctamente!", "true");
+
                     limpiarForm();
-                     setTimeout(consultarHorarios, 3000);
+                    setTimeout(consultarHorarios, 3000);
                 } else {
                     if (tipoRespuesta === "E~") {
                         mostrarMensaje("alert alert-danger", respuestaTxt, "Error!");
@@ -278,7 +279,7 @@ function enviar() {
             },
             type: 'POST'
         });
-    } 
+    }
 }
 
 function validar() {
@@ -289,9 +290,9 @@ function validar() {
     $("#groupId").removeClass("has-error");
     $("#groupDia").removeClass("has-error");
     $("#groupHora").removeClass("has-error");
-   // $("#groupIdRuta").removeClass("has-error");
-    
-    
+    // $("#groupIdRuta").removeClass("has-error");
+
+
 
     //valida cada uno de los campos del formulario
     //Nota: Solo si fueron digitados
@@ -307,20 +308,20 @@ function validar() {
 //        $("#groupIdRuta").addClass("has-error");
 //        validacion = false;
 //    }
-    if ($("#hora").val()=="") {
+    if ($("#hora").val() == "") {
         $("#groupHora").addClass("has-error");
         validacion = false;
     }
-   
+
     return validacion;
 }
 
 function limpiarForm() {
     //setea el focus del formulario
     $('#Identificador').focus();
-     $("#cancelar").addClass("hidden");
+    $("#cancelar").addClass("hidden");
     //se cambia la accion por agregarPersona
-    $("#horariosAction").val("agregarHorario"); 
+    $("#horariosAction").val("agregarHorario");
     $("#identificador").removeAttr("readonly");
 
     //esconde el div del mensaje
@@ -339,114 +340,114 @@ function validarTamCampos() {
 
     //valida cada uno de los campos del formulario
     //Nota: Solo si fueron digitados
-    if ($("#identificador").val().length >8) {
+    if ($("#identificador").val().length > 8) {
         $("#groupId").addClass("has-error");
         validacion = false;
     }
- 
+
     return validacion;
 }
 
 
-$.fn.pageMe = function(opts){
+$.fn.pageMe = function (opts) {
     var $this = this,
-        defaults = {
-            perPage: 7,
-            showPrevNext: false,
-            hidePageNumbers: false
-        },
-        settings = $.extend(defaults, opts);
-    
+            defaults = {
+                perPage: 7,
+                showPrevNext: false,
+                hidePageNumbers: false
+            },
+    settings = $.extend(defaults, opts);
+
     var listElement = $("#myTable");
-    var perPage = settings.perPage; 
+    var perPage = settings.perPage;
     var children = listElement.children();
     var pager = $('.pager');
-    
-    if (typeof settings.childSelector!="undefined") {
+
+    if (typeof settings.childSelector != "undefined") {
         children = listElement.find(settings.childSelector);
     }
-    
-    if (typeof settings.pagerSelector!="undefined") {
+
+    if (typeof settings.pagerSelector != "undefined") {
         pager = $(settings.pagerSelector);
     }
-    
-    var numItems = children.size();
-    var numPages = Math.ceil(numItems/perPage);
 
-    pager.data("curr",0);
-    
-    if (settings.showPrevNext){
+    var numItems = children.size();
+    var numPages = Math.ceil(numItems / perPage);
+
+    pager.data("curr", 0);
+
+    if (settings.showPrevNext) {
         $('<li><a href="#" class="prev_link">«</a></li>').appendTo(pager);
     }
-    
+
     var curr = 0;
-    while(numPages > curr && (settings.hidePageNumbers==false)){
-        $('<li><a href="#" class="page_link">'+(curr+1)+'</a></li>').appendTo(pager);
+    while (numPages > curr && (settings.hidePageNumbers == false)) {
+        $('<li><a href="#" class="page_link">' + (curr + 1) + '</a></li>').appendTo(pager);
         curr++;
     }
-    
-    if (settings.showPrevNext){
+
+    if (settings.showPrevNext) {
         $('<li><a href="#" class="next_link">»</a></li>').appendTo(pager);
     }
-    
+
     pager.find('.page_link:first').addClass('active');
     pager.find('.prev_link').hide();
-    if (numPages<=1) {
+    if (numPages <= 1) {
         pager.find('.next_link').hide();
     }
-      pager.children().eq(1).addClass("active");
-    
+    pager.children().eq(1).addClass("active");
+
     children.hide();
     children.slice(0, perPage).show();
-    
-    pager.find('li .page_link').click(function(){
-        var clickedPage = $(this).html().valueOf()-1;
-        goTo(clickedPage,perPage);
+
+    pager.find('li .page_link').click(function () {
+        var clickedPage = $(this).html().valueOf() - 1;
+        goTo(clickedPage, perPage);
         return false;
     });
-    pager.find('li .prev_link').click(function(){
+    pager.find('li .prev_link').click(function () {
         previous();
         return false;
     });
-    pager.find('li .next_link').click(function(){
+    pager.find('li .next_link').click(function () {
         next();
         return false;
     });
-    
-    function previous(){
+
+    function previous() {
         var goToPage = parseInt(pager.data("curr")) - 1;
         goTo(goToPage);
     }
-     
-    function next(){
+
+    function next() {
         goToPage = parseInt(pager.data("curr")) + 1;
         goTo(goToPage);
     }
-    
-    function goTo(page){
+
+    function goTo(page) {
         var startAt = page * perPage,
-            endOn = startAt + perPage;
-        
-        children.css('display','none').slice(startAt, endOn).show();
-        
-        if (page>=1) {
+                endOn = startAt + perPage;
+
+        children.css('display', 'none').slice(startAt, endOn).show();
+
+        if (page >= 1) {
             pager.find('.prev_link').show();
         }
         else {
             pager.find('.prev_link').hide();
         }
-        
-        if (page<(numPages-1)) {
+
+        if (page < (numPages - 1)) {
             pager.find('.next_link').show();
         }
         else {
             pager.find('.next_link').hide();
         }
-        
-        pager.data("curr",page);
-      	pager.children().removeClass("active");
-        pager.children().eq(page+1).addClass("active");
-    
+
+        pager.data("curr", page);
+        pager.children().removeClass("active");
+        pager.children().eq(page + 1).addClass("active");
+
     }
 };
 
