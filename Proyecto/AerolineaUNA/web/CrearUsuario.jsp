@@ -134,7 +134,7 @@
                     <div class="form-group" id="groupID">
                         <label for="idUsuario" class="control-label col-xs-3">IDENTIFICACIÓN: </label>
                         <div class="col-xs-9">
-                            <input type="text" class="form-control" id="idUsuario" placeholder="identificación">
+                            <input type="id" class="form-control" id="idUsuario" placeholder="idUsuario">
                         </div>
                     </div>
 
@@ -153,32 +153,32 @@
                     <div class="form-group" id="groupNombre">
                         <label for="nombre" class="control-label col-xs-3">NOMBRE:</label>
                         <div class="col-xs-9">
-                            <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+                            <input type="name" class="form-control" id="nombre" placeholder="Nombre">
                         </div>
                     </div>
                     <div class="form-group" id="groupPrimerApellido">
                         <label for="primerApellido" class="control-label col-xs-3">PRIMER APELLIDO:</label>
                         <div class="col-xs-9">
-                            <input type="text" class="form-control" id="primerApellido" placeholder="Primer Apellido">
+                            <input type="lastname" class="form-control" id="primerApellido" placeholder="Primer Apellido">
                         </div>
                     </div>
                     <div class="form-group" id="groupSegundoApellido">
                         <label for="segundoApellido" class="control-label col-xs-3">SEGUNDO APELLIDO:</label>
                         <div class="col-xs-9">
-                            <input type="text" class="form-control" id="segundoApellido" placeholder="Segundo Apellido">
+                            <input type="lastname2" class="form-control" id="segundoApellido" placeholder="Segundo Apellido">
                         </div>
                     </div>
                     <div class="form-group" id="groupTelefono1">
                         <label for="telefono1" class="control-label col-xs-3" >TELÉFONO 1:</label>
                         <div class="col-xs-9">
-                            <input type="tel" class="form-control" id="telefono1" placeholder="Telefono1">
+                            <input type="tel1" class="form-control" id="telefono1" placeholder="Telefono1">
                         </div>
                     </div>
 
                     <div class="form-group" id="groupTelefono2">
                         <label for="telefono2" class="control-label col-xs-3" >TELÉFONO 2:</label>
                         <div class="col-xs-9">
-                            <input type="tel" class="form-control" id="telefono2" placeholder="Telefono2">
+                            <input type="tel2" class="form-control" id="telefono2" placeholder="Telefono2">
                         </div>
                     </div>
 
@@ -194,7 +194,7 @@
                     <div class="form-group" id="groupFechaNac">
                         <label for="fechaNacimiento" class="control-label col-xs-3">F. NACIMIENTO:</label>
                         <div id="fechaNacimiento" class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="dtp_input2" data-link-format="dd/mm/yyyy">
-                            <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="dpfechaNacimientoText">
+                            <input class="form-control" type="date" value="" readonly placeholder="dd/mm/aaaa" id="dpfechaNacimientoText">
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
