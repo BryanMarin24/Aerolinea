@@ -65,7 +65,7 @@ public class UsuarioServlet extends HttpServlet {
                     case "agregarUsuario":
 
                         //Se llena el objeto con los datos enviados por AJAX por el metodo post
-                        p.setIdUsuario(request.getParameter("IdUsuario"));
+                        p.setIdUsuario(request.getParameter("idUsuario"));
                         p.setCorreo(request.getParameter("correo"));
                         p.setContraseña(request.getParameter("password"));
                         p.setNombre(request.getParameter("nombre"));
@@ -75,10 +75,12 @@ public class UsuarioServlet extends HttpServlet {
                         p.setTelefonoLocal(Integer.parseInt(request.getParameter("telefono2")));
                         p.setDireccion(request.getParameter("direccion"));
                         //Guardar Correctamente en la base de datos
+                        
                         String fechatxt = request.getParameter("fechaNacimiento");
                         DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
                         Date date = format.parse(fechatxt);
                         p.setFechaNacimiento(date);
+                        
                         p.setTipo(request.getParameter("tipo"));
 
                         pBL.save(p);

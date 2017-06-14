@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para anonymous complex type.
+ * <p>Java class for anonymous complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -48,7 +48,7 @@ public class ObtenerIndicadoresEconomicos {
     protected String tnSubNiveles;
 
     /**
-     * Obtiene el valor de la propiedad tcIndicador.
+     * Gets the value of the tcIndicador property.
      * 
      * @return
      *     possible object is
@@ -60,7 +60,7 @@ public class ObtenerIndicadoresEconomicos {
     }
 
     /**
-     * Define el valor de la propiedad tcIndicador.
+     * Sets the value of the tcIndicador property.
      * 
      * @param value
      *     allowed object is
@@ -72,7 +72,7 @@ public class ObtenerIndicadoresEconomicos {
     }
 
     /**
-     * Obtiene el valor de la propiedad tcFechaInicio.
+     * Gets the value of the tcFechaInicio property.
      * 
      * @return
      *     possible object is
@@ -84,7 +84,7 @@ public class ObtenerIndicadoresEconomicos {
     }
 
     /**
-     * Define el valor de la propiedad tcFechaInicio.
+     * Sets the value of the tcFechaInicio property.
      * 
      * @param value
      *     allowed object is
@@ -96,7 +96,7 @@ public class ObtenerIndicadoresEconomicos {
     }
 
     /**
-     * Obtiene el valor de la propiedad tcFechaFinal.
+     * Gets the value of the tcFechaFinal property.
      * 
      * @return
      *     possible object is
@@ -108,7 +108,7 @@ public class ObtenerIndicadoresEconomicos {
     }
 
     /**
-     * Define el valor de la propiedad tcFechaFinal.
+     * Sets the value of the tcFechaFinal property.
      * 
      * @param value
      *     allowed object is
@@ -120,7 +120,7 @@ public class ObtenerIndicadoresEconomicos {
     }
 
     /**
-     * Obtiene el valor de la propiedad tcNombre.
+     * Gets the value of the tcNombre property.
      * 
      * @return
      *     possible object is
@@ -132,7 +132,7 @@ public class ObtenerIndicadoresEconomicos {
     }
 
     /**
-     * Define el valor de la propiedad tcNombre.
+     * Sets the value of the tcNombre property.
      * 
      * @param value
      *     allowed object is
@@ -144,7 +144,7 @@ public class ObtenerIndicadoresEconomicos {
     }
 
     /**
-     * Obtiene el valor de la propiedad tnSubNiveles.
+     * Gets the value of the tnSubNiveles property.
      * 
      * @return
      *     possible object is
@@ -156,7 +156,7 @@ public class ObtenerIndicadoresEconomicos {
     }
 
     /**
-     * Define el valor de la propiedad tnSubNiveles.
+     * Sets the value of the tnSubNiveles property.
      * 
      * @param value
      *     allowed object is
