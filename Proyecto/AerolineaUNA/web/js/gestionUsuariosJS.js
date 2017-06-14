@@ -56,7 +56,7 @@ function enviar() {
             url: 'UsuarioServlet',
             data: {
                 accion: $("#usuariosAction").val(),
-                idUsuario: $("idUsuario").val(),
+                idUsuario: $("#idUsuario").val(),
                 password: $("#password").val(),
                 nombre: $("#nombre").val(),
                 apellido1: $("#primerApellido").val(),
@@ -163,7 +163,7 @@ function validar() {
 
 function limpiarForm() {
     //setea el focus del formulario
-    $('#idUsuario').focus();
+    $("#idUsuario").focus();
     $("#cancelar").addClass("hidden");
     //se cambia la accion por agregarPersona
     $("#usuariosAction").val("agregarUsuario");
