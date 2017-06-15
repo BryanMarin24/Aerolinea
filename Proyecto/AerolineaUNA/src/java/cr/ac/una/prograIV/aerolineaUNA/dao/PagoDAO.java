@@ -92,5 +92,10 @@ public class PagoDAO extends HibernateUtil implements IBaseDAO< Pago , Integer> 
     public List<Pago> find(Integer o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public Pago consultar(Integer a, Integer b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

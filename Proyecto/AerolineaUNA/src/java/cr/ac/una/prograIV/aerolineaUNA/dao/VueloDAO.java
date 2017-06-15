@@ -92,5 +92,10 @@ public class VueloDAO extends HibernateUtil implements IBaseDAO< Vuelo , String>
     public List<Vuelo> find(String o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public Vuelo consultar(String a, String b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

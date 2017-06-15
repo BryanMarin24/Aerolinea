@@ -89,6 +89,11 @@ public class AvionDAO extends HibernateUtil implements IBaseDAO<Avion,String>{
     public List<Avion> find(String o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public Avion consultar(String a, String b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }

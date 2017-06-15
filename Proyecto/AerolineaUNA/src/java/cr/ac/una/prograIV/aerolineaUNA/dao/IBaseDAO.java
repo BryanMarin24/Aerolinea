@@ -16,4 +16,6 @@ public interface IBaseDAO<T, K> {
     public abstract List<T> find (K o);
 
     public abstract List<T> findAll();
+    
+    public abstract T consultar(K a, K b);
 }

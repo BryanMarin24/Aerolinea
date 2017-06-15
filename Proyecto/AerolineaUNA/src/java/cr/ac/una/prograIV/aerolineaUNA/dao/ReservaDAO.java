@@ -92,6 +92,11 @@ public class ReservaDAO extends HibernateUtil implements IBaseDAO<Reserva , Inte
     public List<Reserva> find(Integer o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public Reserva consultar(Integer a, Integer b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }

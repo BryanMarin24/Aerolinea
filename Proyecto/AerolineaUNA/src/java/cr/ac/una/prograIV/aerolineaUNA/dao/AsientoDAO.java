@@ -92,6 +92,11 @@ public class AsientoDAO extends HibernateUtil implements IBaseDAO< Asiento, Stri
     public List<Asiento> find(String o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public Asiento consultar(String a, String b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }
