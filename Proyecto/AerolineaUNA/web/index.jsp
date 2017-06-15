@@ -11,6 +11,8 @@
         <meta name="author" content="">
 
         <title> AEROLÍNEA UNA</title>
+        
+        <script src="js/jquery.js"></script>
 
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -19,12 +21,27 @@
 
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
-
-
+        
+        <script src="js/utils.js" type="text/javascript"></script>
+        <script src="js/LoginJS.js" type="text/javascript"></script>
 
     </head>
 
     <body>
+        
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" id="myModalTitle">Modal Header</h4>
+                    </div>
+                    <div class="modal-body" id="myModalMessage">
+                        <p>This is a small modal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="page-header">
             <div class="brand"> AEROLÍNEA UNA </div>
@@ -34,16 +51,19 @@
       
             <div class="contenedor">
                 <div id="navbar" class="navbar-collapse collapse">
-                    <form class="navbar-form navbar-right" role="form">
-                        <div class="form-group">
-                            <input type="text" placeholder="Correo" class="form-control">
+                    <form class="navbar-form navbar-right" form role="form" onsubmit="return false;" id="formLogin">
+                        <div class="form-group" id="groupUser">
+                            <input type="text" placeholder="correo" class="form-control" id="user">
                         </div>
-                        <div class="form-group">
-                            <input type="password" placeholder="Contraseña" class="form-control">
+                        <div class="form-group" id="groupPass">
+                            <input type="password" placeholder="Contraseña" class="form-control" id="pass">
                         </div>
-                        <button type="submit" class="btn btn-success btn-lg">Ingresar</button>              
-                        <a href="CrearUsuario.jsp" class="btn btn-primary btn-lg active" role="button">Crear Cuenta</a>
-
+                        <input type="hidden" value="agregarPersona" id="personasAction"/>
+                        <button type="submit" class="btn btn-success btn-lg" id="enviar">Ingresar</button>              
+                        <a href="CrearUsuario.jsp" class="btn btn-primary btn-lg active" role="button" id="crearCuenta">Crear Cuenta</a>
+                        
+                        
+                    </div>
                     </form>
                 </div>
             </div>
