@@ -8,6 +8,14 @@
         <servlet-name>UsuarioServlet</servlet-name>
         <servlet-class>cr.ac.una.prograIV.aerolineaUNA.controller.UsuarioServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>cr.ac.una.prograIV.aerolineaUNA.controller.Logout</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UsuariosLoginServlet</servlet-name>
+        <servlet-class>cr.ac.una.prograIV.aerolineaUNA.controller.UsuariosLoginServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RutaServlet</servlet-name>
         <url-pattern>/RutaServlet</url-pattern>
@@ -39,6 +47,14 @@
     <servlet-mapping>
         <servlet-name>UsuarioServlet</servlet-name>
         <url-pattern>/UsuarioServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UsuariosLoginServlet</servlet-name>
+        <url-pattern>/UsuariosLoginServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
