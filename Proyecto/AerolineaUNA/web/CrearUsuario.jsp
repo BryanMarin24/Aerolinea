@@ -1,4 +1,20 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.*" session="true" %>
+
+    <%
+
+    HttpSession sesion = request.getSession(true);
+    String tipoUsuario = "";
+    if(sesion!=null){
+        if (sesion.getAttribute("usuario")  == null) {
+            response.sendRedirect("index.jsp");
+        }else{
+            tipoUsuario = (String)sesion.getAttribute("usuario");
+        }
+    }else{
+        response.sendRedirect("index.jsp");
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
 

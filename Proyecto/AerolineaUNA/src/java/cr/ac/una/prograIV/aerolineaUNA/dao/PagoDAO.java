@@ -94,7 +94,7 @@ public class PagoDAO extends HibernateUtil implements IBaseDAO< Pago , Integer> 
     }
 
     @Override
-    public Pago consultar(Integer a, Integer b) {
+    public Pago consultar(Integer a) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

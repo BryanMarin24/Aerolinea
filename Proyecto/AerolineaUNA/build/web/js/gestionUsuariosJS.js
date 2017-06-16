@@ -66,7 +66,7 @@ function enviar() {
                 direccion: $("#direccion").val(),
                 telefono1: $("#telefono1").val(),
                 telefono2: $("#telefono2").val(),
-                tipo: "admi"
+                tipo: "normal"
             },
             error: function () { //si existe un error en la respuesta del ajax
                 mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");

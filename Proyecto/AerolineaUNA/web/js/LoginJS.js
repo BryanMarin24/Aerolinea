@@ -34,13 +34,11 @@ function enviar() {
                 var respuestaTxt = data.substring(2);
                 var tipoRespuesta = data.substring(0, 2);
                 if (tipoRespuesta === "C~") {
-                    mostrarMensaje("alert alert-success", respuestaTxt, "Correcto!");     
+                    //mostrarMensaje("alert alert-success", respuestaTxt, "Correcto!");     
                     //se redirecciona en JavaScript
                     setTimeout(function(){
-                        window.location="crearUsuario.jsp";
-                    }, 2000);
-                    
-                    
+                        window.location="CrearUsuario.jsp";
+                    }, 1000);         
                 } else {
                     if (tipoRespuesta === "E~") {
                         mostrarMensaje("alert alert-danger", respuestaTxt, "Error!");

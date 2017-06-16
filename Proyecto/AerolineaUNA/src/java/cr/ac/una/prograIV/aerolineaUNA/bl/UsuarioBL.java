@@ -34,6 +34,9 @@ public class UsuarioBL extends BaseBL implements IBaseBL<Usuario, String>{
         return (Usuario) this.getDao(Usuario.class.getName()).findById(o);
     }
     
+    public Usuario consultarUsuario(String correo) {
+        return  (Usuario) this.getDao(Usuario.class.getName()).consultar(correo);
+    }
     
     public List<Usuario> find(String className, String nombre) {
         return this.getDao(className).find(nombre);

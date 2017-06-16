@@ -94,7 +94,7 @@ public class AsientoDAO extends HibernateUtil implements IBaseDAO< Asiento, Stri
     }
 
     @Override
-    public Asiento consultar(String a, String b) {
+    public Asiento consultar(String a) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

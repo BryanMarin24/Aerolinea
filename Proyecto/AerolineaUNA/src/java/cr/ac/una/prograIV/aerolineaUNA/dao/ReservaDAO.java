@@ -94,7 +94,7 @@ public class ReservaDAO extends HibernateUtil implements IBaseDAO<Reserva , Inte
     }
 
     @Override
-    public Reserva consultar(Integer a, Integer b) {
+    public Reserva consultar(Integer a) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

@@ -94,7 +94,7 @@ public class EquipajeDAO extends HibernateUtil implements IBaseDAO<Equipaje , In
     }
 
     @Override
-    public Equipaje consultar(Integer a, Integer b) {
+    public Equipaje consultar(Integer a) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

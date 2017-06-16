@@ -91,7 +91,7 @@ public class AvionDAO extends HibernateUtil implements IBaseDAO<Avion,String>{
     }
 
     @Override
-    public Avion consultar(String a, String b) {
+    public Avion consultar(String a) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
