@@ -1,4 +1,7 @@
-<%@page contentType="text/html" pageEncoding="UTF-8" session="false"%> 
+<%@page contentType="text/html" pageEncoding="UTF-8" session="true"%> 
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +63,7 @@
                             <input type="password" placeholder="Contraseña" class="form-control" id="pass">
                         </div>
                         <input type="hidden" value="agregarPersona" id="personasAction"/>
-                        <button type="submit" class="btn btn-success btn-lg" id="enviar">Ingresar</button>              
+                        <button type="submit" class="btn btn-success btn-lg" id="login">Ingresar</button>              
                         <a href="CrearUsuario.jsp" class="btn btn-primary btn-lg active" role="button" id="crearCuenta">Crear Cuenta</a>
                         
                         

@@ -3,12 +3,12 @@
 // Además de agregar los eventos a las respectivas etiquetas
 //******************************************************************************
 $(function () {
-    
+
     //agrega los eventos las capas necesarias
-    $("#enviar").click(function () {
+    $("#login").click(function () {
         enviar();
     });
-    
+
 });
 
 //******************************************************************************
@@ -36,9 +36,12 @@ function enviar() {
                 if (tipoRespuesta === "C~") {
                     //mostrarMensaje("alert alert-success", respuestaTxt, "Correcto!");     
                     //se redirecciona en JavaScript
-                    setTimeout(function(){
-                        window.location="CrearUsuario.jsp";
-                    }, 1000);         
+                    setTimeout(function () {
+                        //window.location="CrearUsuario.jsp";
+
+                        $("#login").hide();
+                         $("#formLogin").append();
+                    }, 500);
                 } else {
                     if (tipoRespuesta === "E~") {
                         mostrarMensaje("alert alert-danger", respuestaTxt, "Error!");

@@ -48,7 +48,7 @@
         <link href="css/css.css" rel="stylesheet" type="text/css"/>
         <script src="js/utils.js" type="text/javascript"></script>
         <script src="js/gestionUsuariosJS.js" type="text/javascript"></script>
-
+        <script src="js/LoginJS.js" type="text/javascript"></script>
     </head>
 
     <body>
